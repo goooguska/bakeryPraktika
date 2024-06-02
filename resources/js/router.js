@@ -3,12 +3,9 @@ import { createRouter, createWebHistory } from "vue-router";
 const routes = [
     {
         path: "/",
-        component: () => import("./Pages/HomeRoute.vue"),
+        component: () => import("./Views/MainView.vue"),
     },
-    {
-        path: "/test",
-        component: () => import("./Pages/TestRoute.vue"),
-    },
+    {},
 ];
 
 export default createRouter({

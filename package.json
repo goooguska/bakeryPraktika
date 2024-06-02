@@ -6,12 +6,18 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@eslint/js": "^9.4.0",
         "axios": "^1.7.2",
+        "eslint": "^9.4.0",
+        "eslint-plugin-vue": "^9.26.0",
+        "globals": "^15.3.0",
         "laravel-vite-plugin": "^1.0.0",
+        "sass": "^1.77.4",
         "vite": "^5.0.0"
     },
     "dependencies": {
         "@vitejs/plugin-vue": "^5.0.4",
+        "scss": "^0.2.4",
         "vue": "^3.4.27",
         "vue-router": "^4.3.2"
     }

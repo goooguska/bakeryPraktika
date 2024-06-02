@@ -18,6 +18,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("/test-me", function () {
-    return 'Hello from Laravel!';
+Route::get("/auth", function () {
+    return 'Hello from auth!';
+});
+Route::get("/reg", function () {
+    return 'Hello from reg!';
 });
