@@ -9,6 +9,10 @@ const routes = [
         path: "/contacts",
         component: () => import("./Views/ContactsView.vue"),
     },
+    {
+        path: "/reg",
+        component: () => import("./Views/RegistrationView.vue"),
+    },
 ];
 
 export default createRouter({

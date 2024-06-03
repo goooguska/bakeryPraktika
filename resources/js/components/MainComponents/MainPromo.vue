@@ -47,9 +47,6 @@
             position: absolute;
             bottom: 30px;
             right: 20px;
-            @media (max-width: $smallMobileScreen) {
-                // right: 30px;
-            }
         }
     }
 }

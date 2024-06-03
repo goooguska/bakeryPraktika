@@ -74,13 +74,7 @@ const getReg = async () => {
     }
     @include flexAndCenter;
     padding: 60px;
-    &__logo {
-        &-img {
-            @media (max-width: $mobileScreen) {
-                // width: 50px;
-            }
-        }
-    }
+
     &__nav {
         &-list {
             @include flexAndCenter;

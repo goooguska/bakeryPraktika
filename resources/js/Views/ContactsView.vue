@@ -1,7 +1,13 @@
-<script setup></script>
+<script setup>
+import ContactFeedback from "../components/ContactsComponents/ContactsFeedback.vue";
+import ContactsRestaurants from "../components/ContactsComponents/ContactsRestaurants.vue";
+</script>
 
 <template>
-    <div></div>
+    <div>
+        <ContactsRestaurants />
+        <ContactFeedback />
+    </div>
 </template>
 
 <style lang="scss" scoped></style>
