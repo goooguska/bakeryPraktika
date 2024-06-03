@@ -43,7 +43,7 @@ const getMoreInfoAboutRestaurant = () => {
                 <img
                     @click="getMoreInfoAboutRestaurant"
                     class="card-popup__content-close"
-                    src="/assets/icons/close.svg"
+                    src="/public/assets/icons/close.svg"
                     alt="close"
                 />
             </div>
@@ -62,11 +62,26 @@ const getMoreInfoAboutRestaurant = () => {
         @include fontStyle(70px, 600, "Alumni Sans", $light-brown);
         position: absolute;
         bottom: 20px;
-        left: 40px;
+        left: 15%;
+        @media (max-width: $tabletScreen) {
+            left: 20%;
+        }
+        @media (max-width: $mobileScreen) {
+            left: 30%;
+        }
     }
     &-image {
         max-width: 762px;
         width: 100%;
+        @media (max-width: $extraLargeScreen) {
+            width: 80%;
+        }
+        @media (max-width: $tabletScreen) {
+            width: 70%;
+        }
+        @media (max-width: $mobileScreen) {
+            width: 50%;
+        }
     }
 }
 .card-popup {
@@ -82,25 +97,59 @@ const getMoreInfoAboutRestaurant = () => {
         position: relative;
         text-align: center;
         &-image {
+            max-width: 1142px;
             pointer-events: none;
+            width: 100%;
+            @media (max-width: $extraLargeScreen) {
+                width: 80%;
+            }
+            @media (max-width: $mobileScreen) {
+                width: 50%;
+            }
         }
         &-title {
             top: 60%;
+            @media (max-width: $mobileScreen) {
+                top: 50%;
+            }
         }
         &-street {
             top: 68%;
+            @media (max-width: $mobileScreen) {
+                top: 58%;
+            }
         }
         &-phone {
             top: 76%;
+            @media (max-width: $mobileScreen) {
+                top: 66%;
+            }
         }
         &-email {
             top: 84%;
+            @media (max-width: $mobileScreen) {
+                top: 74%;
+            }
         }
         &-close {
+            max-width: 100px;
+            width: 100%;
             position: absolute;
             top: 32px;
             right: 43px;
             cursor: pointer;
+            @media (max-width: $extraLargeScreen) {
+                width: 50%;
+                right: 12%;
+            }
+            @media (max-width: $tabletScreen) {
+                width: 10%;
+            }
+            @media (max-width: $mobileScreen) {
+                width: 5%;
+                right: 27%;
+                top: 5%;
+            }
         }
     }
 }

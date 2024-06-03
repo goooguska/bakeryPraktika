@@ -19,11 +19,29 @@ a {
     text-decoration: none;
 }
 h1 {
-    @include fontStyle(140px, 500, "Amatic SC", $dark-brown);
+    @include fontStyleForHeaders(140px, 500, "Amatic SC", $dark-brown);
+    @media (max-width: $mobileScreen) {
+        @include fontStyleForHeaders(100px, 500, "Amatic SC", $dark-brown);
+    }
+    @media (max-width: $smallMobileScreen) {
+        @include fontStyleForHeaders(80px, 500, "Amatic SC", $dark-brown);
+    }
 }
 h2 {
-    @include fontStyle(120px, 400, "Amatic SC", $dark-brown);
+    @include fontStyleForHeaders(120px, 400, "Amatic SC", $dark-brown);
+    @media (max-width: $mobileScreen) {
+        @include fontStyleForHeaders(80px, 500, "Amatic SC", $dark-brown);
+    }
+    @media (max-width: $smallMobileScreen) {
+        @include fontStyleForHeaders(60px, 500, "Amatic SC", $dark-brown);
+    }
 }
 h3 {
-    @include fontStyle(100px, 500, "Alumni Sans", $dark-brown);
+    @include fontStyleForHeaders(100px, 500, "Alumni Sans", $dark-brown);
+    @media (max-width: $mobileScreen) {
+        @include fontStyleForHeaders(60px, 500, "Alumni Sans", $dark-brown);
+    }
+    @media (max-width: $smallMobileScreen) {
+        @include fontStyleForHeaders(40px, 500, "Alumni Sans", $dark-brown);
+    }
 }

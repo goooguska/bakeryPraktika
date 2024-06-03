@@ -44,15 +44,23 @@ const restaurants = [
 </template>
 
 <style lang="scss" scoped>
+@import "/resources/css/main.scss";
+
 .restaurants {
     background-image: url("/assets/images/bgMain2.png");
     &__content {
         padding: 70px 0 120px 0;
+        @media (max-width: $mobileScreen) {
+            padding: 40px 0;
+        }
         &-list {
             display: flex;
             justify-content: center;
             gap: 90px;
             flex-flow: row wrap;
+            @media (max-width: $mobileScreen) {
+                gap: 30px;
+            }
             &-item {
                 cursor: pointer;
             }

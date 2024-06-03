@@ -31,6 +31,9 @@
 @import "/resources/css/main.scss";
 .footer {
     margin-top: 90px;
+    @media (max-width: $mobileScreen) {
+        margin-top: 30px;
+    }
     &__nav {
         &-list {
             display: flex;
@@ -49,6 +52,9 @@
         max-width: 1796px;
         width: 100%;
         margin: 35px auto;
+        @media (max-width: $smallMobileScreen) {
+            margin: 5px auto;
+        }
     }
 
     &__copyright {

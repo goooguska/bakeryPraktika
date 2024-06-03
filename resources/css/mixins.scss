@@ -1,9 +1,33 @@
 @import "./variables.scss";
+@mixin fontStyleForHeaders($fz, $fw, $ff, $fc) {
+    font-size: $fz;
+    color: $fc;
+    font-family: $ff, sans-serif;
+    font-weight: $fw;
+    @media (max-width: $extraLargeScreen) {
+        font-size: calc($fz / 1.5);
+    }
+    @media (max-width: $tabletScreen) {
+        font-size: calc($fz / 2.5);
+    }
+}
 @mixin fontStyle($fz, $fw, $ff, $fc) {
     font-size: $fz;
     color: $fc;
     font-family: $ff, sans-serif;
     font-weight: $fw;
+    @media (max-width: $extraLargeScreen) {
+        font-size: calc($fz / 1.5);
+    }
+    @media (max-width: $tabletScreen) {
+        font-size: calc($fz / 2);
+    }
+    @media (max-width: $mobileScreen) {
+        font-size: calc($fz / 3);
+    }
+    @media (max-width: $smallMobileScreen) {
+        font-size: calc($fz / 4);
+    }
 }
 @mixin flexAndCenter {
     display: flex;
@@ -11,11 +35,15 @@
     justify-content: space-between;
 }
 @mixin buttonStyle {
-    font-size: 30px;
+    @include fontStyle(30px, 500, "Alumni Sans", $light-brown);
     background-color: $dark-brown;
-    font-family: "Alumni Sans", sans-serif;
-    color: $light-brown;
     border-radius: 30px;
     padding: 10px 40px;
     cursor: pointer;
+    @media (max-width: $tabletScreen) {
+        padding: 10px 20px;
+    }
+    @media (max-width: $mobileScreen) {
+        padding: 5px 10px;
+    }
 }

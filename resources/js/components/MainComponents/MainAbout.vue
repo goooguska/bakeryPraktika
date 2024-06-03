@@ -36,12 +36,21 @@
     &__content {
         padding: 112px 60px 190px 60px;
         text-align: center;
+        @media (max-width: $mobileScreen) {
+            padding: 60px;
+        }
+        @media (max-width: $smallMobileScreen) {
+            padding: 20px;
+        }
         &-title {
             margin-bottom: 20px;
         }
         &-text {
             margin-top: 50px;
             @include fontStyle(50px, 600, "Alumni Sans", $dark-brown);
+            @media (max-width: $mobileScreen) {
+                margin-top: 20px;
+            }
         }
     }
 }

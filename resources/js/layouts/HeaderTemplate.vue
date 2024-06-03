@@ -23,8 +23,13 @@ const getReg = async () => {
 <template>
     <header class="header">
         <div class="header__logo">
-            <img src="/assets/icons/main-logo.svg" alt="logo" />
+            <img
+                class="header__logo-img"
+                src="/public/assets/icons/main-logo.svg"
+                alt="logo"
+            />
         </div>
+        <!-- <p v-if="response">{{ response.data }}</p> -->
         <nav class="header__nav">
             <ul class="header__nav-list">
                 <RouterLink class="header__nav-list-item" to="/"
@@ -46,8 +51,10 @@ const getReg = async () => {
         </nav>
         <div class="header__auth-btns">
             <ButtonComponent @click.prevent="getAuth()">ВОЙТИ </ButtonComponent>
-            <ButtonComponent @click.prevent="getReg()"
-                >РЕГИСТРАЦИЯ
+            <ButtonComponent @click.prevent="getReg()">
+                <RouterLink class="header__auth-btns-link" to="reg">
+                    РЕГИСТРАЦИЯ</RouterLink
+                >
             </ButtonComponent>
         </div>
     </header>
@@ -57,20 +64,44 @@ const getReg = async () => {
 @import "/resources/css/main.scss";
 
 .header {
+    @media (max-width: $tabletScreen) {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: 1fr, 100px, 100px;
+        text-align: center;
+        justify-content: center;
+        gap: 15px;
+    }
     @include flexAndCenter;
     padding: 60px;
+    &__logo {
+        &-img {
+            @media (max-width: $mobileScreen) {
+                // width: 50px;
+            }
+        }
+    }
     &__nav {
         &-list {
             @include flexAndCenter;
             gap: 85px;
+            @media (max-width: $laptopScreen) {
+                gap: 25px;
+            }
+
             &-item {
                 @include fontStyle(30px, 500, "Alumni Sans", $dark-brown);
             }
         }
     }
     &__auth-btns {
+        justify-content: center;
+
         display: flex;
         gap: 15px;
+        &-link {
+            color: $light-brown;
+        }
     }
 }
 </style>

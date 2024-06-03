@@ -5,7 +5,7 @@
         <div class="promo__image">
             <img
                 class="promo__image-img"
-                src="/assets/images/baget.png"
+                src="/public/assets/images/baget.png"
                 alt=""
             />
             <div class="promo__image-tradition">
@@ -22,6 +22,8 @@
 </template>
 
 <style lang="scss" scoped>
+@import "/resources/css/main.scss";
+
 .promo {
     position: relative;
     text-align: center;
@@ -44,7 +46,10 @@
         &-art {
             position: absolute;
             bottom: 30px;
-            right: 60px;
+            right: 20px;
+            @media (max-width: $smallMobileScreen) {
+                // right: 30px;
+            }
         }
     }
 }
