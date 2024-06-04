@@ -17,7 +17,12 @@ class NewsFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+
+            'name' => $this->faker->unique()->sentence(5),
+            'date_news' => $this->faker->date(),
+            'info' => $this->faker->sentence(30),
+            'image' => $this->faker->imageUrl
         ];
+
     }
 }

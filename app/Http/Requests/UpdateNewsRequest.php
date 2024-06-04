@@ -11,7 +11,7 @@ class UpdateNewsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,25 @@ class UpdateNewsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
-        ];
+            'name' => [
+                'max:55',
+                'min:0',
+                'string',
+                'unique:news,name',
+            ],
+            'date_news' => [
+                'date',
+            ],
+            'info' => [
+                'string',
+            ],
+            'image' => [
+                'image',
+                'max:5120',
+                'mimes:gif,jpeg,png,webp',
+                'min:1',
+            ],
+       
+    ];
     }
 }

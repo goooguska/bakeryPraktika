@@ -71,6 +71,9 @@ const getReg = async () => {
 @import "/resources/css/main.scss";
 
 .header {
+    @include flexAndCenter;
+    padding-top: 60px;
+    padding-bottom: 60px;
     @media (max-width: $tabletScreen) {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -79,8 +82,6 @@ const getReg = async () => {
         justify-content: center;
         gap: 15px;
     }
-    @include flexAndCenter;
-    padding: 60px;
 
     &__nav {
         &-list {
