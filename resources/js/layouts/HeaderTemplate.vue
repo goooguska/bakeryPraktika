@@ -1,7 +1,6 @@
 <script setup>
 import axios from "axios";
 import { ref } from "vue";
-import ButtonComponent from "../components/UI/ButtonComponent.vue";
 
 const response = ref();
 const getAuth = async () => {
@@ -50,12 +49,20 @@ const getReg = async () => {
             </ul>
         </nav>
         <div class="header__auth-btns">
-            <ButtonComponent @click.prevent="getAuth()">ВОЙТИ </ButtonComponent>
-            <ButtonComponent @click.prevent="getReg()">
-                <RouterLink class="header__auth-btns-link" to="reg">
-                    РЕГИСТРАЦИЯ</RouterLink
-                >
-            </ButtonComponent>
+            <RouterLink
+                @click.prevent="getAuth()"
+                class="header__auth-btns-link"
+                to="/account/profile"
+            >
+                ВОЙТИ</RouterLink
+            >
+            <RouterLink
+                @click.prevent="getReg()"
+                class="header__auth-btns-link"
+                to="/reg"
+            >
+                РЕГИСТРАЦИЯ</RouterLink
+            >
         </div>
     </header>
 </template>
@@ -84,6 +91,8 @@ const getReg = async () => {
             }
 
             &-item {
+                @include underlineLink;
+
                 @include fontStyle(30px, 500, "Alumni Sans", $dark-brown);
             }
         }
@@ -94,7 +103,7 @@ const getReg = async () => {
         display: flex;
         gap: 15px;
         &-link {
-            color: $light-brown;
+            @include buttonStyle;
         }
     }
 }

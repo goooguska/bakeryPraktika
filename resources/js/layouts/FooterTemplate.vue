@@ -40,6 +40,8 @@
             justify-content: center;
             gap: 25px;
             &-item {
+                @include underlineLink;
+
                 @include fontStyle(30px, 500, "Alumni Sans", $dark-brown);
             }
         }

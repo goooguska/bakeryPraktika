@@ -55,3 +55,24 @@
     padding: 15px 0 15px 35px;
     border: 2px solid $dark-brown;
 }
+
+@mixin underlineLink {
+    position: relative;
+    &::after {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        display: block;
+        width: 0;
+        height: 3px;
+        background: $dark-brown;
+        transition: 0.3s;
+    }
+    &::after {
+        left: 50%;
+        transform: translate(-50%);
+    }
+    &:hover:after {
+        width: 100%;
+    }
+}
