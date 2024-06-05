@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 55)
             ->unique();
+            $table->text('info');
             $table->decimal('cost', 7, 2)
             ->index();
             $table->timestamps();

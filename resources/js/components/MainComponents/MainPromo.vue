@@ -40,13 +40,13 @@
         }
         &-tradition {
             position: absolute;
-            top: 8px;
-            left: 16px;
+            top: 5%;
+            left: 5%;
         }
         &-art {
             position: absolute;
-            bottom: 30px;
-            right: 20px;
+            bottom: 5%;
+            right: 5%;
         }
     }
 }

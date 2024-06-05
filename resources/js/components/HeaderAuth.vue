@@ -46,8 +46,6 @@ const getReg = async () => {
             ВОЙТИ
         </button>
 
-        <!-- to="/account/profile" -->
-
         <RouterLink @click.prevent="getReg()" class="nonauth-link" to="/reg">
             РЕГИСТРАЦИЯ</RouterLink
         >
@@ -64,10 +62,21 @@ const getReg = async () => {
     display: flex;
     align-items: center;
     gap: 45px;
+    @media (max-width: $mobileScreen) {
+        justify-content: center;
+    }
     &__cart {
         display: flex;
         align-items: center;
-        gap: 15px;
+        gap: 10%;
+        @media (max-width: $mobileScreen) {
+            max-width: 42px;
+            width: 100%;
+            img {
+                width: 60%;
+            }
+        }
+
         &-text {
             cursor: pointer;
             @include fontStyle(30px, 400, "Alumni Sans", $dark-brown);
@@ -78,6 +87,14 @@ const getReg = async () => {
         display: flex;
         align-items: center;
         gap: 15px;
+
+        @media (max-width: $mobileScreen) {
+            max-width: 85px;
+            width: 100%;
+            img {
+                width: 10%;
+            }
+        }
         &-link {
             @include fontStyle(30px, 400, "Alumni Sans", $dark-brown);
             @include underlineLink;

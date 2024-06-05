@@ -17,7 +17,9 @@ class RecipeFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->unique()->words(3,true),
+            'info' => $this->faker->paragraph(3),
+            'baking_time' => $this->faker->date(),
         ];
     }
 }

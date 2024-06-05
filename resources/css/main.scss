@@ -11,6 +11,9 @@
     width: 100%;
     margin: 0 auto;
     padding: 0 60px;
+    @media (max-width: $extraLargeScreen) {
+        padding: 0 20px;
+    }
 }
 ul {
     list-style: none;

@@ -18,7 +18,7 @@ class NewsFactory extends Factory
     {
         return [
 
-            'name' => $this->faker->unique()->sentence(5),
+            'name' => $this->faker->unique()->sentence(3),
             'date_news' => $this->faker->date(),
             'info' => $this->faker->sentence(30),
             'image' => $this->faker->imageUrl

@@ -9,6 +9,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
+    protected $fillable = [
+        'name',
+        'info',
+        'cost',
+        'recipe_id',
+
+
+    ];
     use HasFactory;
+    public function recipeIngredient(): BelongsTo
+    {
+        return $this->belongsTo(RecipeIngredients::class);
+    }
   
 }

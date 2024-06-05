@@ -35,6 +35,7 @@ import InputComponent from "../UI/InputComponent.vue";
                     alt="insta"
                     class="feedback__socials-item"
                 />
+                <p>*</p>
             </a>
             <a class="feedback__socials-link" href="https://t.me/Trikli">
                 <img
@@ -43,6 +44,12 @@ import InputComponent from "../UI/InputComponent.vue";
                     class="feedback__socials-item"
                 />
             </a>
+        </div>
+        <div class="small">
+            <p>
+                * Instagram — принадлежит компании Meta Platforms, которая была
+                признана экстремистской организацией в России и запрещена.
+            </p>
         </div>
     </div>
 </template>
@@ -71,14 +78,17 @@ import InputComponent from "../UI/InputComponent.vue";
         justify-content: center;
         gap: 40px;
         margin-bottom: 80px;
-        &-link:hover::after {
-            content: "Привет";
-            display: inline-flex;
-            padding: 5px;
-            background-color: $white;
-            color: $dark-brown;
-            position: absolute;
+        position: relative;
+
+        &-link {
+            display: flex;
+            p {
+                color: $dark-brown;
+            }
         }
     }
+}
+.small {
+    color: $dark-brown;
 }
 </style>
