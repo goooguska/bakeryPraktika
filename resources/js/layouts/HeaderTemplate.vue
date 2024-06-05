@@ -1,22 +1,5 @@
 <script setup>
-import axios from "axios";
-import { ref } from "vue";
-
-const response = ref();
-const getAuth = async () => {
-    try {
-        response.value = await axios.get("/api/auth");
-    } catch (error) {
-        console.log(error);
-    }
-};
-const getReg = async () => {
-    try {
-        response.value = await axios.get("/api/reg");
-    } catch (error) {
-        console.log(error);
-    }
-};
+import HeaderAuth from "../components/HeaderAuth.vue";
 </script>
 
 <template>
@@ -28,7 +11,6 @@ const getReg = async () => {
                 alt="logo"
             />
         </div>
-        <!-- <p v-if="response">{{ response.data }}</p> -->
         <nav class="header__nav">
             <ul class="header__nav-list">
                 <RouterLink class="header__nav-list-item" to="/"
@@ -48,22 +30,7 @@ const getReg = async () => {
                 </RouterLink>
             </ul>
         </nav>
-        <div class="header__auth-btns">
-            <RouterLink
-                @click.prevent="getAuth()"
-                class="header__auth-btns-link"
-                to="/account/profile"
-            >
-                ВОЙТИ</RouterLink
-            >
-            <RouterLink
-                @click.prevent="getReg()"
-                class="header__auth-btns-link"
-                to="/reg"
-            >
-                РЕГИСТРАЦИЯ</RouterLink
-            >
-        </div>
+        <HeaderAuth />
     </header>
 </template>
 
@@ -82,6 +49,16 @@ const getReg = async () => {
         justify-content: center;
         gap: 15px;
     }
+    &__logo {
+        max-width: 101px;
+        width: 20%;
+        @media (max-width: $tabletScreen) {
+            margin: 0 auto;
+        }
+    }
+    &__logo img {
+        width: 100%;
+    }
 
     &__nav {
         &-list {
@@ -96,15 +73,6 @@ const getReg = async () => {
 
                 @include fontStyle(30px, 500, "Alumni Sans", $dark-brown);
             }
-        }
-    }
-    &__auth-btns {
-        justify-content: center;
-
-        display: flex;
-        gap: 15px;
-        &-link {
-            @include buttonStyle;
         }
     }
 }

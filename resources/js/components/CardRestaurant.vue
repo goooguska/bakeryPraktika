@@ -9,13 +9,10 @@ defineProps({
         required: true,
     },
 });
-const getMoreInfoAboutRestaurant = () => {
-    showPopup.value = !showPopup.value;
-};
 </script>
 
 <template>
-    <div @click="getMoreInfoAboutRestaurant" class="card">
+    <div @click="showPopup = !showPopup" class="card">
         <img class="card-image" :src="`${restaurant.image}`" alt="restaurant" />
         <p class="card-title">{{ restaurant.location }}</p>
     </div>
@@ -41,7 +38,7 @@ const getMoreInfoAboutRestaurant = () => {
                     Почта: {{ restaurant.email }}
                 </p>
                 <img
-                    @click="getMoreInfoAboutRestaurant"
+                    @click="showPopup = !showPopup"
                     class="card-popup__content-close"
                     src="/public/assets/icons/close.svg"
                     alt="close"

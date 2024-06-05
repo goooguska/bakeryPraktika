@@ -8,7 +8,6 @@ onMounted(async () => {
     try {
         const response = await axios.get("http://127.0.0.1:8000/api/v1/news");
         newsList.value = response.data;
-        console.log(newsList);
     } catch (error) {
         console.error(error);
     }

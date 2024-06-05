@@ -39,6 +39,8 @@
     background-color: $dark-brown;
     border-radius: 30px;
     padding: 10px 40px;
+    border: none;
+
     cursor: pointer;
     @media (max-width: $tabletScreen) {
         padding: 10px 20px;

@@ -19,21 +19,30 @@ import InputComponent from "../UI/InputComponent.vue";
             предложениях
         </p>
         <div class="feedback__socials">
-            <img
-                src="/public/assets/icons/vkontacte.svg"
-                alt="vk"
-                class="feedback__socials-item"
-            />
-            <img
-                src="/public/assets/icons/instagram.svg"
-                alt="insta"
-                class="feedback__socials-item"
-            />
-            <img
-                src="/public/assets/icons/telegram.svg"
-                alt="tg"
-                class="feedback__socials-item"
-            />
+            <a class="feedback__socials-link" href="https://vk.com/goooguska">
+                <img
+                    src="/public/assets/icons/vkontacte.svg"
+                    alt="vk"
+                    class="feedback__socials-item"
+                />
+            </a>
+            <a
+                class="feedback__socials-link"
+                href="https://www.instagram.com/goooguska?igsh=MTRiMmhmOHE0ZzY1MA%3D%3D&utm_source=qr"
+            >
+                <img
+                    src="/public/assets/icons/instagram.svg"
+                    alt="insta"
+                    class="feedback__socials-item"
+                />
+            </a>
+            <a class="feedback__socials-link" href="https://t.me/Trikli">
+                <img
+                    src="/public/assets/icons/telegram.svg"
+                    alt="tg"
+                    class="feedback__socials-item"
+                />
+            </a>
         </div>
     </div>
 </template>
@@ -62,6 +71,14 @@ import InputComponent from "../UI/InputComponent.vue";
         justify-content: center;
         gap: 40px;
         margin-bottom: 80px;
+        &-link:hover::after {
+            content: "Привет";
+            display: inline-flex;
+            padding: 5px;
+            background-color: $white;
+            color: $dark-brown;
+            position: absolute;
+        }
     }
 }
 </style>

@@ -1,6 +1,8 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 export const useMainStore = defineStore("mainStore", () => {
+    const showAuth = ref(false);
+    const showPopup = ref(false);
     const slides = ref([
         {
             image: "assets/images/slider1.png",
@@ -45,5 +47,20 @@ export const useMainStore = defineStore("mainStore", () => {
             email: "pishkabakery@gmail.ru",
         },
     ]);
-    return { restaurants, slides };
+
+    const changeVisiblePopup = () => {
+        showPopup.value = !showPopup.value;
+    };
+    const changeAuth = () => {
+        showPopup.value = !showPopup.value;
+        showAuth.value = !showAuth.value;
+    };
+    return {
+        restaurants,
+        slides,
+        showPopup,
+        showAuth,
+        changeVisiblePopup,
+        changeAuth,
+    };
 });
