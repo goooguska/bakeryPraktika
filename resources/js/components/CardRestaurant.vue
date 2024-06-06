@@ -40,7 +40,7 @@ defineProps({
                 <img
                     @click="showPopup = !showPopup"
                     class="card-popup__content-close"
-                    src="/public/assets/icons/close.svg"
+                    src="/assets/icons/close.svg"
                     alt="close"
                 />
             </div>

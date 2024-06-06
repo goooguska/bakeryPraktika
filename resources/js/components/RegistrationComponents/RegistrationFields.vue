@@ -1,6 +1,4 @@
-<script setup>
-import InputComponent from "../UI/InputComponent.vue";
-</script>
+<script setup></script>
 
 <template>
     <div class="registration">
@@ -9,7 +7,7 @@ import InputComponent from "../UI/InputComponent.vue";
             <ul class="registration__list">
                 <li class="registration__list-item">
                     <label for="login">Введите ваш логин </label>
-                    <InputComponent
+                    <input
                         class="registration__list-item-input"
                         placeholder="Логин"
                         name="login"
@@ -19,7 +17,7 @@ import InputComponent from "../UI/InputComponent.vue";
 
                 <li class="registration__list-item">
                     <label for="password">Введите ваш пароль </label>
-                    <InputComponent
+                    <input
                         class="registration__list-item-input"
                         placeholder="Пароль"
                         name="password"
@@ -29,7 +27,7 @@ import InputComponent from "../UI/InputComponent.vue";
 
                 <li class="registration__list-item">
                     <label for="confPassword">Подтверждённый пароль </label>
-                    <InputComponent
+                    <input
                         class="registration__list-item-input"
                         placeholder="Подтверждённый пароль"
                         name="confPassword"
@@ -40,7 +38,7 @@ import InputComponent from "../UI/InputComponent.vue";
             <ul class="registration__list">
                 <li class="registration__list-item">
                     <label for="name"> Введите ваше имя </label>
-                    <InputComponent
+                    <input
                         class="registration__list-item-input"
                         placeholder="Имя"
                         name="name"
@@ -50,7 +48,7 @@ import InputComponent from "../UI/InputComponent.vue";
 
                 <li class="registration__list-item">
                     <label for="name"> Введите ваш email</label>
-                    <InputComponent
+                    <input
                         class="registration__list-item-input"
                         placeholder="Email"
                         name="email"
@@ -60,7 +58,7 @@ import InputComponent from "../UI/InputComponent.vue";
 
                 <li class="registration__list-item">
                     <label for="phone"> Введите ваш телефон</label>
-                    <InputComponent
+                    <input
                         class="registration__list-item-input"
                         placeholder="Телефон"
                         name="phone"
@@ -70,11 +68,8 @@ import InputComponent from "../UI/InputComponent.vue";
             </ul>
         </form>
 
-        <div class="registration-btn">
-            <InputComponent
-                class="registration__list-item-input"
-                type="submit"
-            />
+        <div class="registration__btn">
+            <input class="registration__btn-input" type="submit" />
             <!-- <ButtonComponent type="submit">Зарегистрироваться </ButtonComponent> -->
         </div>
     </div>
@@ -95,11 +90,37 @@ import InputComponent from "../UI/InputComponent.vue";
             margin-bottom: 12px;
             @include fontStyle(50px, 400, "Alumni Sans", $dark-brown);
         }
+        input {
+            max-width: 620px;
+            width: 100%;
+            @include inputStyle;
+            &::placeholder {
+                color: rgba(162, 81, 51, 0.5);
+            }
+            &:focus {
+                outline: none;
+                border-color: $dark-brown;
+                box-shadow: 0 0 5px $dark-brown;
+            }
+        }
     }
-    &-btn {
+    &__btn {
         margin-top: 120px;
         display: flex;
         justify-content: center;
+        &-input {
+            max-width: 620px;
+            width: 100%;
+            @include inputStyle;
+            &::placeholder {
+                color: rgba(162, 81, 51, 0.5);
+            }
+            &:focus {
+                outline: none;
+                border-color: $dark-brown;
+                box-shadow: 0 0 5px $dark-brown;
+            }
+        }
     }
 }
 </style>

@@ -31,6 +31,8 @@
 @import "/resources/css/main.scss";
 .footer {
     margin-top: 90px;
+    // flex: 0 0 auto;
+
     @media (max-width: $mobileScreen) {
         margin-top: 30px;
     }

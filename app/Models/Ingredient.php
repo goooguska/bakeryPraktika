@@ -17,7 +17,7 @@ class Ingredient extends Model
     use HasFactory;
     public function recipeIngredients(): BelongsToMany
     {
-        return $this->belongsToMany(RecipeIngredients::class);
+        return $this->belongsToMany(RecipeIngredient::class);
     }
     public function provider(): BelongsTo
     {

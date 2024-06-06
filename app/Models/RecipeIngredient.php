@@ -6,17 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class RecipeIngredients extends Model
+class RecipeIngredient extends Model
 {
     protected $fillable = [
         'recipe_id',
         'ingredient_id',
     ];
     use HasFactory;
-    public function product(): BelongsTo
-    {
-        return $this->belongsTo(Product::class);
-    }
+  
     public function recipe(): BelongsTo
     {
         return $this->belongsTo(Recipe::class);

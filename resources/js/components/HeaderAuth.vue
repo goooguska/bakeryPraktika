@@ -26,11 +26,11 @@ const getReg = async () => {
     <!-- <p v-if="response">{{ response.data }}</p> -->
     <div v-if="mainStore.showAuth" class="auth">
         <div class="auth__cart">
-            <img src="/public/assets/icons/cart.svg" alt="cart" />
+            <img src="/assets/icons/cart.svg" alt="cart" />
             <p class="auth__cart-text">КОРЗИНА</p>
         </div>
         <div class="auth__account">
-            <img src="/public/assets/icons/account.svg" alt="account" />
+            <img src="/assets/icons/account.svg" alt="account" />
 
             <RouterLink
                 @click.prevent="getAuth()"

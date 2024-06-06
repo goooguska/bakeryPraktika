@@ -5,46 +5,41 @@ namespace App\Http\Controllers;
 use App\Models\Recipe;
 use App\Http\Requests\StoreRecipeRequest;
 use App\Http\Requests\UpdateRecipeRequest;
+use App\Http\Resources\RecipeCollection;
+use App\Http\Resources\RecipeResource;
 
 class RecipeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $recipes = Recipe::all();
+        return new RecipeCollection($recipes);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreRecipeRequest $request)
     {
-        //
+        $data = $request->validated();
+        $recipe = Recipe::create($data);
+        return response()->noContent(201)->withHeaders([
+            'Location' => route('recipes.show', [
+                'news' => $recipe->id,
+            ]),
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Recipe $recipe)
     {
-        //
-    }
+        return new RecipeResource($recipe);
 
-    /**
-     * Update the specified resource in storage.
-     */
+    }
     public function update(UpdateRecipeRequest $request, Recipe $recipe)
     {
-        //
+        $data = $request->validated();
+        $recipe->update($data);
+        return response()->noContent(204);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Recipe $recipe)
     {
-        //
+        $recipe->delete();
+        return response()->noContent(204);
     }
 }

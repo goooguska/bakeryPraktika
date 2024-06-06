@@ -22,7 +22,18 @@ class UpdateRecipeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => [
+                'max:155',
+                'min:0',
+                'string',
+                'unique:recipes,name',
+            ],
+            'info' => [
+                'string',
+            ],
+            'baking_time' => [
+                'date',
+            ],
         ];
     }
 }

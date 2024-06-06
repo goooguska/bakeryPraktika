@@ -1,6 +1,5 @@
 <script setup>
 import { useMainStore } from "../store/MainStore";
-import InputComponent from "./UI/InputComponent.vue";
 const mainStore = useMainStore();
 </script>
 
@@ -9,13 +8,13 @@ const mainStore = useMainStore();
         <img
             @click="mainStore.changeVisiblePopup"
             class="popup__close"
-            src="/public/assets/icons/close.svg"
+            src="/assets/icons/close.svg"
             alt="close"
         />
         <h2 class="popup__title">Авторизация</h2>
         <div class="popup__item">
             <label for="login"> Введите ваш логин</label>
-            <InputComponent
+            <input
                 class="popup__item-input"
                 placeholder="Логин"
                 name="login"
@@ -24,7 +23,7 @@ const mainStore = useMainStore();
         </div>
         <div class="popup__item">
             <label for="password"> Введите ваш пароль</label>
-            <InputComponent
+            <input
                 class="popup__item-input"
                 placeholder="Пароль"
                 name="password"
@@ -90,6 +89,17 @@ const mainStore = useMainStore();
 
         &-input {
             margin: 0 auto;
+            max-width: 620px;
+            width: 100%;
+            @include inputStyle;
+            &::placeholder {
+                color: rgba(162, 81, 51, 0.5);
+            }
+            &:focus {
+                outline: none;
+                border-color: $dark-brown;
+                box-shadow: 0 0 5px $dark-brown;
+            }
         }
     }
     &__btns {

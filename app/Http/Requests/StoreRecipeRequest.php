@@ -22,7 +22,21 @@ class StoreRecipeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => [
+                'max:155',
+                'min:0',
+                'required',
+                'string',
+                'unique:recipes,name',
+            ],
+            'info' => [
+                'required',
+                'string',
+            ],
+            'baking_time' => [
+                'date',
+                'required',
+            ],
         ];
     }
 }

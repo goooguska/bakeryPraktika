@@ -2,21 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\Product;
-use App\Models\Recipe;
-use App\Models\RecipeIngredients;
+use Database\Factories\RecipeIngredientFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ProductSeeder extends Seeder
+class RecipeIngredientSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Product::factory()
-            ->count(7)
-            ->create();
+        RecipeIngredientFactory::new()->count(6)->create();
+
     }
 }

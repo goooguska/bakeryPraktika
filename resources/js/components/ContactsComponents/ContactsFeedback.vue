@@ -1,15 +1,14 @@
 <script setup>
 import ButtonComponent from "../UI/ButtonComponent.vue";
-import InputComponent from "../UI/InputComponent.vue";
 </script>
 
 <template>
     <div class="feedback">
         <p class="feedback-info">Узнайте первым о наших новинках</p>
-        <div class="feedback__input">
-            <InputComponent placeholder="Ваша электронная почта">
-            </InputComponent>
-            <ButtonComponent class="feedback__input-btn"
+        <div class="feedback__items">
+            <input class="feedback__items-input" placeholder="Ваша электронная почта">
+            </input>
+            <ButtonComponent class="feedback__items-btn"
                 >Подписаться
             </ButtonComponent>
         </div>
@@ -21,7 +20,7 @@ import InputComponent from "../UI/InputComponent.vue";
         <div class="feedback__socials">
             <a class="feedback__socials-link" href="https://vk.com/goooguska">
                 <img
-                    src="/public/assets/icons/vkontacte.svg"
+                    src="/assets/icons/vkontacte.svg"
                     alt="vk"
                     class="feedback__socials-item"
                 />
@@ -31,7 +30,7 @@ import InputComponent from "../UI/InputComponent.vue";
                 href="https://www.instagram.com/goooguska?igsh=MTRiMmhmOHE0ZzY1MA%3D%3D&utm_source=qr"
             >
                 <img
-                    src="/public/assets/icons/instagram.svg"
+                    src="/assets/icons/instagram.svg"
                     alt="insta"
                     class="feedback__socials-item"
                 />
@@ -39,7 +38,7 @@ import InputComponent from "../UI/InputComponent.vue";
             </a>
             <a class="feedback__socials-link" href="https://t.me/Trikli">
                 <img
-                    src="/public/assets/icons/telegram.svg"
+                    src="/assets/icons/telegram.svg"
                     alt="tg"
                     class="feedback__socials-item"
                 />
@@ -59,12 +58,25 @@ import InputComponent from "../UI/InputComponent.vue";
 
 .feedback {
     text-align: center;
-    &__input {
+    &__items {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 50px;
         margin: 56px 0;
+       &-input{
+        max-width: 620px;
+            width: 100%;
+            @include inputStyle;
+            &::placeholder {
+                color: rgba(162, 81, 51, 0.5);
+            }
+            &:focus {
+                outline: none;
+                border-color: $dark-brown;
+                box-shadow: 0 0 5px $dark-brown;
+            }
+       }
         &-btn {
             padding: 22px 100px;
         }

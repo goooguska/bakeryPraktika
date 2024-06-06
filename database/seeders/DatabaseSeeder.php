@@ -16,8 +16,9 @@ class DatabaseSeeder extends Seeder
             NewsSeeder::class,
             RecipeSeeder::class,
             IngredientSeeder::class,
-            RecipeIngredientsSeeder::class,
+            RecipeIngredientSeeder::class,
             ProductSeeder::class,
+            ProductRecipeSeeder::class
 
 
 

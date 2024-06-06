@@ -5,7 +5,7 @@
         <div class="promo__image">
             <img
                 class="promo__image-img"
-                src="/public/assets/images/baget.png"
+                src="/assets/images/baget.png"
                 alt=""
             />
             <div class="promo__image-tradition">

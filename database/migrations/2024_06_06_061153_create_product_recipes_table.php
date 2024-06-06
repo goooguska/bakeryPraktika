@@ -11,23 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('baked_products', function (Blueprint $table) {
+        Schema::create('product_recipes', function (Blueprint $table) {
             $table->id();
-            $table->dateTime("date_baking");
-            $table->dateTime("date_sale");
-            $table->bigInteger('baker_id') 
-            ->unsigned();
-            $table->foreign('baker_id')   
-            ->references('id')       
-            ->on('bakers')          
-            ->onDelete('CASCADE')      
-            ->onUpdate('RESTRICT');
-
             $table->bigInteger('product_id') 
             ->unsigned();
             $table->foreign('product_id')   
             ->references('id')       
-            ->on('product_recipes')          
+            ->on('products')          
+            ->onDelete('CASCADE')      
+            ->onUpdate('RESTRICT');
+            
+            $table->bigInteger('recipe_id') 
+            ->unsigned();
+            $table->foreign('recipe_id')   
+            ->references('recipe_id')       
+            ->on('recipe_ingredients')          
             ->onDelete('CASCADE')      
             ->onUpdate('RESTRICT');
             $table->timestamps();
@@ -39,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('baked_products');
+        Schema::dropIfExists('product_recipes');
     }
 };

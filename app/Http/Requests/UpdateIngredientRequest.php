@@ -22,7 +22,17 @@ class UpdateIngredientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => [
+                'max:55',
+                'min:0',
+                'string',
+                'unique:ingredients,name',
+            ],
+            'quantity' => [
+                'integer',
+                'max:2147483647',
+                'min:0',
+            ],
         ];
     }
 }

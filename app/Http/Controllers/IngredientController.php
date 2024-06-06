@@ -5,46 +5,40 @@ namespace App\Http\Controllers;
 use App\Models\Ingredient;
 use App\Http\Requests\StoreIngredientRequest;
 use App\Http\Requests\UpdateIngredientRequest;
+use App\Http\Resources\IngredientCollection;
+use App\Http\Resources\IngredientResource;
 
 class IngredientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
-        //
+        $ingredients = Ingredient::all();
+        return new IngredientCollection($ingredients);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreIngredientRequest $request)
     {
-        //
+        $data = $request->validated();
+        $ingredient = Ingredient::create($data);
+        return response()->noContent(201)->withHeaders([
+            'Location' => route('ingredients.show', [
+                'ingredient' => $ingredient->id,
+            ]),
+        ]);
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Ingredient $ingredient)
     {
-        //
+        return new IngredientResource($ingredient);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateIngredientRequest $request, Ingredient $ingredient)
     {
-        //
+        $data = $request->validated();
+        $ingredient->update($data);
+        return response()->noContent(204);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Ingredient $ingredient)
     {
-        //
+        $ingredient->delete();
+        return response()->noContent(204);
     }
 }

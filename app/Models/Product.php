@@ -13,14 +13,8 @@ class Product extends Model
         'name',
         'info',
         'cost',
-        'recipe_id',
-
-
     ];
     use HasFactory;
-    public function recipeIngredient(): BelongsTo
-    {
-        return $this->belongsTo(RecipeIngredients::class);
-    }
+  
   
 }

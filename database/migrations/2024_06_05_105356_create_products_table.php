@@ -20,13 +20,7 @@ return new class extends Migration
             ->index();
             $table->timestamps();
           
-            $table->bigInteger('recipe_id') 
-            ->unsigned();
-            $table->foreign('recipe_id')   
-            ->references('recipe_id')       
-            ->on('recipe_ingredients')          
-            ->onDelete('CASCADE')      
-            ->onUpdate('RESTRICT');
+        
         });
     }
 

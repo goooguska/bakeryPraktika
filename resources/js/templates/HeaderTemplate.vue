@@ -7,7 +7,7 @@ import HeaderAuth from "../components/HeaderAuth.vue";
         <div class="header__logo">
             <img
                 class="header__logo-img"
-                src="/public/assets/icons/main-logo.svg"
+                src="/assets/icons/main-logo.svg"
                 alt="logo"
             />
         </div>
