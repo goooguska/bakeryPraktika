@@ -29,6 +29,7 @@ defineProps({
         <div class="card-btns" @click="showPopup = !showPopup">
             <ButtonComponent>Заказать </ButtonComponent>
         </div>
+
         <div class="popup" v-show="showPopup">
             <img
                 @click="showPopup = !showPopup"
@@ -44,8 +45,10 @@ defineProps({
                 />
                 <div class="popup__content-info">
                     <div class="popup__content-text">
-                        <p>Круассан крем чиз с карамелью</p>
-                        <p>
+                        <p class="popup__content-text-title">
+                            Круассан крем чиз с карамелью
+                        </p>
+                        <p class="popup__content-text-subtitle">
                             Воздушный круассан с творожным сыром и карамельным
                             кремом, покрыт белым шоколадом
                         </p>
@@ -54,20 +57,52 @@ defineProps({
                         <p>Пищевая ценность на 100 гр продукта</p>
                         <ul class="popup__content-calories-list">
                             <li class="popup__content-calories-list-item">
-                                <p>420</p>
-                                <p>ккал</p>
+                                <p
+                                    class="popup__content-calories-list-item-text-number"
+                                >
+                                    420
+                                </p>
+                                <p
+                                    class="popup__content-calories-list-item-text"
+                                >
+                                    ккал
+                                </p>
                             </li>
                             <li class="popup__content-calories-list-item">
-                                <p>5.5</p>
-                                <p>белки</p>
+                                <p
+                                    class="popup__content-calories-list-item-text-number"
+                                >
+                                    5.5
+                                </p>
+                                <p
+                                    class="popup__content-calories-list-item-text"
+                                >
+                                    белки
+                                </p>
                             </li>
                             <li class="popup__content-calories-list-item">
-                                <p>28</p>
-                                <p>жиры</p>
+                                <p
+                                    class="popup__content-calories-list-item-text-number"
+                                >
+                                    28
+                                </p>
+                                <p
+                                    class="popup__content-calories-list-item-text"
+                                >
+                                    жиры
+                                </p>
                             </li>
                             <li class="popup__content-calories-list-item">
-                                <p>36</p>
-                                <p>углеводы</p>
+                                <p
+                                    class="popup__content-calories-list-item-text-number"
+                                >
+                                    36
+                                </p>
+                                <p
+                                    class="popup__content-calories-list-item-text"
+                                >
+                                    углеводы
+                                </p>
                             </li>
                         </ul>
                         <p>Вес блюда: 90 г</p>
@@ -76,8 +111,8 @@ defineProps({
             </div>
             <div class="popup__description">
                 <div class="popup__description-text">
-                    <p>Состав:</p>
-                    <p>
+                    <p class="popup__description-text-title">Состав:</p>
+                    <p class="popup__description-text-subtitle">
                         Мука пшеничная в.с., шоколад белый (сахар, какао масло,
                         цельное сухое молоко, натуральный экстракт ванили),
                     </p>
@@ -122,6 +157,60 @@ defineProps({
     &-btns {
         margin-top: 20px;
         text-align: center;
+    }
+}
+.popup {
+    padding: 50px;
+    position: absolute;
+    max-width: 1146px;
+    background-color: $white;
+    border-radius: 30px;
+
+    &__close {
+    }
+    &__content {
+        display: flex;
+        &-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 30px;
+        }
+        &-info {
+        }
+        &-text {
+            &-title {
+                @include fontStyle(40px, 500, "Alumni Sans", $dark-brown);
+            }
+            &-subtitle {
+                @include fontStyle(30px, 500, "Alumni Sans", $dark-brown);
+            }
+        }
+        &-calories {
+            &-list {
+                &-item {
+                }
+            }
+        }
+    }
+    &__description {
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        &-text {
+            max-width: 570px;
+            &-title {
+                @include fontStyle(30px, 500, "Alumni Sans", $dark-brown);
+            }
+            &-subtitle {
+                @include fontStyle(
+                    30px,
+                    500,
+                    "Alumni Sans",
+                    rgba(162, 81, 51, 0.6)
+                );
+            }
+        }
     }
 }
 </style>

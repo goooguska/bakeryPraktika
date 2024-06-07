@@ -52,6 +52,7 @@ export const useMainStore = defineStore("mainStore", () => {
     const changeVisiblePopup = () => {
         showPopup.value = !showPopup.value;
     };
+
     const changeAuth = () => {
         showPopup.value = !showPopup.value;
         showAuth.value = !showAuth.value;
