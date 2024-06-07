@@ -34,9 +34,34 @@ class StoreProductRequest extends FormRequest
                 'string',
             ],
             'cost' => [
-                'decimal:0,2',
-                'max:99999.99',
+                'integer',
+                'max:1000',
                 'min:0',
+                'required',
+            ],
+            'quantity' => [
+                'integer',
+                'max:99',
+                'min:0',
+                'required',
+            ],
+            'weight' => [
+                'integer',
+                'max:999',
+                'min:0',
+                'required'
+            ],
+            'image' => [
+                'image',
+                'max:5120',
+                'mimes:gif,jpeg,png,webp',
+                'min:1',
+                'required',
+            ],
+            'type' => [
+                'string',
+                'max:100',
+                'min:1',
                 'required',
             ],
         ];

@@ -17,22 +17,32 @@ class ProductRecipeResource extends JsonResource
         return [
             'type' => 'productRecipes',
             'id' => (string) $this->id,
+           'attributes' =>[
+                'product' => $this->product,
+                'recipe' => $this->recipe,
+                
+
+
+           ],
             'relationships' => [
                 'product' => [
                     'links' => [
                         'related' => route('products.show', ['product' => $this->product_id])
                     ],
                 ],
+              
                 'recipe' => [
                     'links' => [
                         'related' => route('recipes.show', ['recipe' => $this->recipe_id])
                     ],
                 ],
+           
             ],
 
             'links' => [
                 'self' => route('productRecipes.show', ['productRecipe' => $this->id]),
             ],
         ];
+      
     }
 }

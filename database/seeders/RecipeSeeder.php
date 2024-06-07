@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Recipe;
+use Database\Factories\RecipeFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,8 +14,9 @@ class RecipeSeeder extends Seeder
      */
     public function run(): void
     {
-        Recipe::factory()
-        ->count(5)
-        ->create();
+       
+
+        RecipeFactory::new()->count(30)->create();
+        
     }
 }

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('product_id') 
             ->unsigned();
-            $table->foreign('product_id')   
+            $table->foreign('product_id')
+            ->unique()
             ->references('id')       
             ->on('products')          
             ->onDelete('CASCADE')      
@@ -23,8 +24,9 @@ return new class extends Migration
             
             $table->bigInteger('recipe_id') 
             ->unsigned();
-            $table->foreign('recipe_id')   
-            ->references('recipe_id')       
+            $table->foreign('recipe_id') 
+            ->unique()  
+            ->references('id')        // ПОФИКСИТЬ
             ->on('recipe_ingredients')          
             ->onDelete('CASCADE')      
             ->onUpdate('RESTRICT');

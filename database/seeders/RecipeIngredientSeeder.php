@@ -13,7 +13,7 @@ class RecipeIngredientSeeder extends Seeder
      */
     public function run(): void
     {
-        RecipeIngredientFactory::new()->count(6)->create();
+        RecipeIngredientFactory::new()->count(30)->create();
 
     }
 }

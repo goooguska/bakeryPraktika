@@ -1,5 +1,5 @@
 <script setup>
-import AccountTemplate from "../layouts/AccountTemplate.vue";
+import AccountTemplate from "../templates/AccountTemplate.vue";
 </script>
 
 <template>

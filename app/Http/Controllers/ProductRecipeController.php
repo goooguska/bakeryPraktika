@@ -28,6 +28,7 @@ class ProductRecipeController extends Controller
     public function show(ProductRecipe $productRecipe)
     {
         return new ProductRecipeResource($productRecipe);
+
     }
     public function update(UpdateProductRecipeRequest $request, ProductRecipe $productRecipe)
     {

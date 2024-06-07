@@ -18,14 +18,25 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            //  'recipe_id' => function(){
-            //     return Recipe::isRandomOrder()->first()->id;
-            // },
+     
             'name' => $this->faker->unique()->words(3, true),
-            'cost' => $this->faker->randomFloat(2,7,3),
+            'cost' => $this->faker->randomNumber(3, true),
             'info' => $this->faker->paragraph(3),
+            'quantity' => $this->faker->randomNumber(2, true),
+            'weight' => $this->faker->randomNumber(3, true),
+            'image' => $this->faker->imageUrl,
+            'type' => $this->faker->randomElement(['Круассаны', 'Пирожки', 'Десерты', 'Печенье', 'Хлеб','Холодные напитки','Горячие напитки'])
+
+
+
 
          
         ];
     }
 }
+
+
+
+
+
+

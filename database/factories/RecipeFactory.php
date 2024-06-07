@@ -18,7 +18,7 @@ class RecipeFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->words(3,true),
-            'info' => $this->faker->paragraph(3),
+            'info' => $this->faker->unique()->paragraph(3),
             'baking_time' => $this->faker->date(),
         ];
     }

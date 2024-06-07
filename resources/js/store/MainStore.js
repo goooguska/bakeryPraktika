@@ -3,6 +3,7 @@ import { ref } from "vue";
 export const useMainStore = defineStore("mainStore", () => {
     const showAuth = ref(false);
     const showPopup = ref(false);
+
     const slides = ref([
         {
             image: "assets/images/slider1.png",

@@ -17,7 +17,10 @@ class RecipeIngredientResource extends JsonResource
         return [
             'type' => 'recipeIngredients',
             'id' => (string) $this->id,
-
+            'attributes' =>[
+                'recipe' => $this->recipe,
+                'ingredient' => $this->ingredient,
+           ],
             'relationships' => [
                 'recipe' => [
                     'links' => [

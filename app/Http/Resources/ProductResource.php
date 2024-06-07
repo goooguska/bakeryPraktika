@@ -22,6 +22,13 @@ class ProductResource extends JsonResource
                 'name' => $this->name,
                 'info' => $this->info,
                 'cost' =>(float) $this->cost,
+                'quantity' =>(int) $this->quantity,
+                'weight' =>(int) $this->weight,
+                'image' => $this->image,
+                'type' => (string)$this->type,
+
+
+
             ],
             'links' => [
                 'self' => route('products.show', ['product' => $this->id]),

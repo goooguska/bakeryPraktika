@@ -16,8 +16,15 @@ return new class extends Migration
             $table->string('name', 55)
             ->unique();
             $table->text('info');
-            $table->decimal('cost', 7, 2)
-            ->index();
+            $table->integer('cost')
+            ->default(0);
+            $table->integer('quantity')
+            ->default(0);
+            $table->integer('weight')
+            ->default(0);
+            $table->string('image', 191)
+            ->unique();
+            $table->string('type', 100);
             $table->timestamps();
           
         

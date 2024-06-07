@@ -13,6 +13,10 @@ class Product extends Model
         'name',
         'info',
         'cost',
+        'quantity',
+        'weight',
+        'image',
+        'type'
     ];
     use HasFactory;
   
