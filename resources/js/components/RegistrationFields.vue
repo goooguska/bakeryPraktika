@@ -1,4 +1,28 @@
-<script setup></script>
+<script setup>
+import axios from "axios";
+import { ref } from "vue";
+const login = ref("");
+const firstName = ref("");
+const password = ref("");
+const password_confirmation = ref("");
+const email = ref("");
+const phoneNumber = ref("");
+
+const store = () => {
+    axios
+        .post("api/users", {
+            firstName: firstName.value,
+            login: login.value,
+            password: password.value,
+            email: email.value,
+            password_confirmation: password_confirmation.value,
+            phoneNumber: phoneNumber.value,
+        })
+        .then((res) => {
+            console.log(res);
+        });
+};
+</script>
 
 <template>
     <div class="registration">
@@ -12,6 +36,7 @@
                         placeholder="Логин"
                         name="login"
                         type="text"
+                        v-model="login"
                     />
                 </li>
 
@@ -22,27 +47,30 @@
                         placeholder="Пароль"
                         name="password"
                         type="password"
+                        v-model="password"
                     />
                 </li>
 
                 <li class="registration__list-item">
-                    <label for="confPassword">Подтверждённый пароль </label>
+                    <label for="password_confirm">Подтверждённый пароль </label>
                     <input
                         class="registration__list-item-input"
                         placeholder="Подтверждённый пароль"
-                        name="confPassword"
+                        name="password_confirmation"
                         type="password"
+                        v-model="password_confirmation"
                     />
                 </li>
             </ul>
             <ul class="registration__list">
                 <li class="registration__list-item">
-                    <label for="name"> Введите ваше имя </label>
+                    <label for="firstName"> Введите ваше имя </label>
                     <input
                         class="registration__list-item-input"
                         placeholder="Имя"
-                        name="name"
+                        name="firstName"
                         type="text"
+                        v-model="firstName"
                     />
                 </li>
 
@@ -53,6 +81,7 @@
                         placeholder="Email"
                         name="email"
                         type="email"
+                        v-model="email"
                     />
                 </li>
 
@@ -63,13 +92,19 @@
                         placeholder="Телефон"
                         name="phone"
                         type="text"
+                        v-model="phoneNumber"
                     />
                 </li>
             </ul>
         </form>
 
         <div class="registration__btn">
-            <input class="registration__btn-input" type="submit" />
+            <input
+                @click.prevent="store"
+                class="registration__btn-input"
+                type="submit"
+                value="Зарегистрироваться"
+            />
             <!-- <ButtonComponent type="submit">Зарегистрироваться </ButtonComponent> -->
         </div>
     </div>
@@ -111,7 +146,8 @@
         &-input {
             max-width: 620px;
             width: 100%;
-            @include inputStyle;
+            @include buttonStyle;
+
             &::placeholder {
                 color: rgba(162, 81, 51, 0.5);
             }

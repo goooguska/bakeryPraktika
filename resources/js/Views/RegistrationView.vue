@@ -1,5 +1,5 @@
 <script setup>
-import RegistrationFields from "../components/RegistrationComponents/RegistrationFields.vue";
+import RegistrationFields from "../components/RegistrationFields.vue";
 </script>
 
 <template>

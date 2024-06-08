@@ -42,7 +42,7 @@ const getReg = async () => {
         </div>
     </div>
     <div v-else class="nonauth">
-        <button class="nonauth-link" @click="mainStore.changeVisiblePopup">
+        <button class="nonauth-link" @click="mainStore.changeVisiblePopup()">
             ВОЙТИ
         </button>
 

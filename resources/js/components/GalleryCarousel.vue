@@ -4,7 +4,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { useMainStore } from "../../store/MainStore";
+import { useMainStore } from "../store/MainStore";
 const modules = [Navigation];
 const mainStore = useMainStore();
 </script>

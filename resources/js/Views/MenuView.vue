@@ -2,10 +2,8 @@
 import axios from "axios";
 import { onMounted, ref } from "vue";
 import CardProduct from "../components/CardProduct.vue";
-import { useMainStore } from "../store/MainStore";
 const productList = ref([]);
-const newProductList = ref([]);
-const mainStore = useMainStore();
+
 const types = [
     {
         name: "Круассаны",

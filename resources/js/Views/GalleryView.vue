@@ -1,5 +1,5 @@
 <script setup>
-import GalleryCarousel from "../components/GalleryComponents/GalleryCarousel.vue";
+import GalleryCarousel from "../components/GalleryCarousel.vue";
 </script>
 
 <template>

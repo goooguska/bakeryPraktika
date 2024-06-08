@@ -1,6 +1,20 @@
 <script setup>
+import axios from "axios";
+import { ref } from "vue";
 import { useMainStore } from "../store/MainStore";
 const mainStore = useMainStore();
+const login = ref("");
+const password = ref("");
+const loginUser = () => {
+    axios
+        .post("/api/auth/login", {
+            login: login.value,
+            password: password.value,
+        })
+        .then((res) => {
+            console.log(res);
+        });
+};
 </script>
 
 <template>
@@ -19,6 +33,7 @@ const mainStore = useMainStore();
                 placeholder="Логин"
                 name="login"
                 type="text"
+                v-model="login"
             />
         </div>
         <div class="popup__item">
@@ -28,16 +43,23 @@ const mainStore = useMainStore();
                 placeholder="Пароль"
                 name="password"
                 type="password"
+                v-model="password"
             />
         </div>
         <div class="popup__btns">
-            <RouterLink
+            <input
+                class="popup__item-submit"
+                value="Авторизоваться"
+                type="submit"
+                @click.prevent="loginUser"
+            />
+            <!-- <RouterLink
                 class="popup__btns-link"
                 to="/"
                 @click="mainStore.changeAuth"
             >
                 Авторизоваться</RouterLink
-            >
+            > -->
             <p class="popup__btns-text">ИЛИ</p>
 
             <RouterLink
@@ -86,7 +108,9 @@ const mainStore = useMainStore();
     }
     &__item {
         @include fontStyle(50px, 400, "Alumni Sans", $dark-brown);
-
+        &-submit {
+            @include buttonStyle;
+        }
         &-input {
             margin: 0 auto;
             max-width: 620px;
