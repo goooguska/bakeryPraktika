@@ -11,8 +11,4 @@ import HeaderTemplate from "./templates/HeaderTemplate.vue";
     </div>
 </template>
 
-<style scoped>
-.content {
-    /* flex: 1 0 auto; */
-}
-</style>
+<style scoped></style>

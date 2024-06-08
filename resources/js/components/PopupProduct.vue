@@ -1,9 +1,6 @@
 <script setup>
-import { ref } from "vue";
-import { useMainStore } from "../store/MainStore";
 import ButtonComponent from "./UI/ButtonComponent.vue";
-const mainStore = useMainStore();
-const showPopupProduct = ref(false);
+
 defineProps({
     product: {
         type: Object,

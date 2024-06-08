@@ -25,12 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::get("/auth", function () {
-//     return 'Hello from auth!';
-// });
-// Route::get("/reg", function () {
-//     return 'Hello from reg!';
-// });
 Route::prefix('v1')->group(function () {
     Route::apiResource('news', NewsController::class);
     Route::apiResource('products', ProductController::class);

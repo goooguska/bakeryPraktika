@@ -1,26 +1,23 @@
 <script setup>
-import axios from "axios";
 import { ref } from "vue";
 import { useMainStore } from "../store/MainStore";
+import { useUserStore } from "../store/UserStore";
 const mainStore = useMainStore();
+
+const userStore = useUserStore();
 const login = ref("");
 const password = ref("");
-const loginUser = () => {
-    axios
-        .post("/api/auth/login", {
-            login: login.value,
-            password: password.value,
-        })
-        .then((res) => {
-            console.log(res);
-        });
+const signIn = () => {
+    userStore.loginUser(login.value, password.value);
+    login.value = "";
+    password.value = "";
 };
 </script>
 
 <template>
     <div class="popup">
         <img
-            @click="mainStore.changeVisiblePopup"
+            @click="mainStore.toggleShow"
             class="popup__close"
             src="/assets/icons/close.svg"
             alt="close"
@@ -46,27 +43,20 @@ const loginUser = () => {
                 v-model="password"
             />
         </div>
+        <p v-if="userStore.errorUser !== ''" class="error">
+            {{ userStore.errorUser }}
+        </p>
         <div class="popup__btns">
             <input
                 class="popup__item-submit"
                 value="Авторизоваться"
                 type="submit"
-                @click.prevent="loginUser"
+                @click.prevent="signIn"
             />
-            <!-- <RouterLink
-                class="popup__btns-link"
-                to="/"
-                @click="mainStore.changeAuth"
-            >
-                Авторизоваться</RouterLink
-            > -->
+
             <p class="popup__btns-text">ИЛИ</p>
 
-            <RouterLink
-                class="popup__btns-link"
-                to="/reg"
-                @click="mainStore.changeVisiblePopup"
-            >
+            <RouterLink class="popup__btns-link" to="/reg">
                 Зарегистрироваться</RouterLink
             >
         </div>
@@ -127,7 +117,7 @@ const loginUser = () => {
         }
     }
     &__btns {
-        margin-top: 50px;
+        margin-top: 20px;
         &-link {
             @include buttonStyle;
         }
@@ -136,5 +126,8 @@ const loginUser = () => {
             @include fontStyle(30px, 400, "Alumni Sans", $dark-brown);
         }
     }
+}
+.error {
+    @include fontStyle(30px, 400, "Alumni Sans", $dark-brown);
 }
 </style>

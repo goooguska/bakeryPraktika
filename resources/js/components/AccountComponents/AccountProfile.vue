@@ -1,11 +1,21 @@
-<script setup></script>
+<script setup>
+import { useUserStore } from "../../store/UserStore";
+
+const userStore = useUserStore();
+// onMounted(() => {
+//     userStore.getInfoAboutUser();
+// });
+</script>
 
 <template>
     <div class="profile">
         <p class="profile-text">Пользователь</p>
         <p class="profile-text">Ваш логин: Krutoy</p>
         <p class="profile-text">Ваше имя: Кот</p>
-        <RouterLink class="profile-link" to="/">Выйти </RouterLink>
+
+        <button @click.prevent="userStore.logoutUser" class="profile-link">
+            Выйти
+        </button>
     </div>
 </template>
 

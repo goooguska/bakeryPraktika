@@ -14,8 +14,12 @@ class StoreController extends Controller
     $data = array_merge(['role' => 'customer'], $data);
     $data['password'] = Hash::make($data['password']);
 
-    User::firstOrCreate(['login' =>$data['login']],$data);
-    return response([]);
+    $user = User::where('login',$data['login'])->first();
+    if ($user) return response( ['error'=>'Такой крутой логин или email существует, бро'],403);
+    $user=User::create($data);
+
+    $token = auth()->tokenById($user->id);
+    return response(['token'=>$token]);
    }
   
     

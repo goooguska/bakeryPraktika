@@ -1,30 +1,20 @@
 <script setup>
-import axios from "axios";
-import { ref } from "vue";
+import { onMounted, onUpdated } from "vue";
 import { useMainStore } from "../store/MainStore";
+import { useUserStore } from "../store/UserStore";
 import PopupAuth from "./PopupAuth.vue";
+const userStore = useUserStore();
 const mainStore = useMainStore();
-const response = ref();
-
-const getAuth = async () => {
-    try {
-        response.value = await axios.get("/api/auth");
-    } catch (error) {
-        console.log(error);
-    }
-};
-const getReg = async () => {
-    try {
-        response.value = await axios.get("/api/reg");
-    } catch (error) {
-        console.log(error);
-    }
-};
+onMounted(() => {
+    userStore.getToken();
+});
+onUpdated(() => {
+    userStore.getToken();
+});
 </script>
 
 <template>
-    <!-- <p v-if="response">{{ response.data }}</p> -->
-    <div v-if="mainStore.showAuth" class="auth">
+    <div v-if="userStore.accesToken" class="auth">
         <div class="auth__cart">
             <img src="/assets/icons/cart.svg" alt="cart" />
             <p class="auth__cart-text">КОРЗИНА</p>
@@ -32,25 +22,19 @@ const getReg = async () => {
         <div class="auth__account">
             <img src="/assets/icons/account.svg" alt="account" />
 
-            <RouterLink
-                @click.prevent="getAuth()"
-                class="auth__account-link"
-                to="/account/profile"
-            >
+            <RouterLink class="auth__account-link" to="/account/profile">
                 ЛИЧНЫЙ КАБИНЕТ
             </RouterLink>
         </div>
     </div>
     <div v-else class="nonauth">
-        <button class="nonauth-link" @click="mainStore.changeVisiblePopup()">
+        <button class="nonauth-link" @click="mainStore.toggleShow">
             ВОЙТИ
         </button>
 
-        <RouterLink @click.prevent="getReg()" class="nonauth-link" to="/reg">
-            РЕГИСТРАЦИЯ</RouterLink
-        >
+        <RouterLink class="nonauth-link" to="/reg"> РЕГИСТРАЦИЯ</RouterLink>
     </div>
-    <div v-show="mainStore.showPopup" class="card">
+    <div v-show="mainStore.showAuth" class="card">
         <PopupAuth />
     </div>
 </template>

@@ -1,27 +1,14 @@
 <script setup>
-import axios from "axios";
 import { ref } from "vue";
+import { useUserStore } from "../store/UserStore";
+const userStore = useUserStore();
+
 const login = ref("");
 const firstName = ref("");
 const password = ref("");
 const password_confirmation = ref("");
 const email = ref("");
 const phoneNumber = ref("");
-
-const store = () => {
-    axios
-        .post("api/users", {
-            firstName: firstName.value,
-            login: login.value,
-            password: password.value,
-            email: email.value,
-            password_confirmation: password_confirmation.value,
-            phoneNumber: phoneNumber.value,
-        })
-        .then((res) => {
-            console.log(res);
-        });
-};
 </script>
 
 <template>
@@ -97,15 +84,26 @@ const store = () => {
                 </li>
             </ul>
         </form>
+        <p v-if="userStore.errorUser !== ''" class="error">
+            {{ userStore.errorUser }}
+        </p>
 
         <div class="registration__btn">
             <input
-                @click.prevent="store"
+                @click.prevent="
+                    userStore.regNewUser(
+                        login,
+                        firstName,
+                        password,
+                        password_confirmation,
+                        email,
+                        phoneNumber
+                    )
+                "
                 class="registration__btn-input"
                 type="submit"
                 value="Зарегистрироваться"
             />
-            <!-- <ButtonComponent type="submit">Зарегистрироваться </ButtonComponent> -->
         </div>
     </div>
 </template>
@@ -140,7 +138,7 @@ const store = () => {
         }
     }
     &__btn {
-        margin-top: 120px;
+        margin-top: 60px;
         display: flex;
         justify-content: center;
         &-input {
@@ -158,5 +156,10 @@ const store = () => {
             }
         }
     }
+}
+.error {
+    text-align: center;
+    padding-top: 20px;
+    @include fontStyle(30px, 400, "Alumni Sans", $dark-brown);
 }
 </style>
