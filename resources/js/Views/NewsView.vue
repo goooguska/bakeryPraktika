@@ -32,7 +32,10 @@ onMounted(async () => {
 .news {
     background-image: url("/public/assets/images/newsBG.png");
     &__content {
-        padding: 30px 60px 180px 60px;
+        padding: 30px 60px 0px 60px;
+        @media (max-width: $tabletScreen) {
+            padding: 0;
+        }
     }
 }
 </style>

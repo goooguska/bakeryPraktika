@@ -11,6 +11,7 @@ const signIn = () => {
     userStore.loginUser(login.value, password.value);
     login.value = "";
     password.value = "";
+    mainStore.toggleShow();
 };
 </script>
 

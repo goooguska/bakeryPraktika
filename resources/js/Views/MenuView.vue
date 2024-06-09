@@ -59,6 +59,7 @@ const filteredProducts = (type) => {
 
 <template>
     <h1>Меню</h1>
+
     <div class="menu">
         <div class="menu__points">
             <ul class="menu__points-list">
@@ -86,20 +87,18 @@ const filteredProducts = (type) => {
             </ul>
         </div>
         <div class="menu__sections">
-            <ul class="menu__sections-list" v-for="item in types" :key="item">
+            <div class="menu__sections-list" v-for="item in types" :key="item">
                 <p :id="item.anchor" class="menu__sections-list-title">
                     {{ item.name }}
                 </p>
-                <div class="menu__sections-list-items">
-                    <li
+                <ul class="menu__sections-list-items">
+                    <CardProduct
+                        :product
                         v-for="product in filteredProducts(item.name)"
                         :key="product.id"
-                        class="menu__sections-section-card"
-                    >
-                        <CardProduct :product />
-                    </li>
-                </div>
-            </ul>
+                    />
+                </ul>
+            </div>
         </div>
     </div>
 </template>
@@ -111,22 +110,27 @@ const filteredProducts = (type) => {
     &__points {
         max-width: 300px;
         width: 100%;
+        border-radius: 15px;
         &-list {
             &-item {
                 @include fontStyle(50px, 500, "Alumni Sans", $dark-brown);
+            }
+            &-item:hover {
+                color: $dark-orange;
             }
         }
     }
     &__sections {
         margin-left: 50px;
+        &-section {
+            &-card {
+            }
+        }
         &-list {
             &-items {
-                // display: flex;
-                // flex-flow: row wrap;
-                // gap: 30px;
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(180px, 464px));
-                grid-gap: 1em;
+                display: flex;
+                flex-flow: row wrap;
+                gap: 30px;
             }
             &-title {
                 margin-bottom: 12px;
@@ -137,10 +141,11 @@ const filteredProducts = (type) => {
             content: "";
             display: block;
             height: 2px;
-            width: 1454px;
+            max-width: 1454px;
+            width: 90%;
             background-color: #938989;
-            margin-top: 50px;
-            margin-bottom: 50px;
+            margin-top: 5%;
+            margin-bottom: 5%;
         }
     }
 }

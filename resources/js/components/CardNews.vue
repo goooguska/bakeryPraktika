@@ -34,12 +34,18 @@ defineProps({
 .card {
     max-width: 1150px;
     width: 100%;
-    margin-bottom: 60px;
+    margin-bottom: 5%;
     display: flex;
+    align-items: center;
     &__image {
         &-img {
             max-width: 472px;
             border-radius: 30px;
+            @media (max-width: $tabletScreen) {
+                width: 100%;
+            }
+            @media (max-width: $mobileScreen) {
+            }
         }
     }
     &__content {
@@ -52,6 +58,9 @@ defineProps({
             margin-top: 15px;
             margin-bottom: 15px;
             @include fontStyle(30px, 600, "Alumni Sans", $dark-brown);
+            @media (max-width: $mobileScreen) {
+                display: none;
+            }
         }
         &-date {
             @include fontStyle(25px, 600, "Alumni Sans", $dark-brown);
@@ -59,7 +68,7 @@ defineProps({
         &-btn {
             width: 100%;
             max-width: 270px;
-            margin-top: 120px;
+            margin-top: 5%;
             text-align: center;
         }
     }

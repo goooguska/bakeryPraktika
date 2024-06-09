@@ -24,40 +24,41 @@ class StoreRequest extends FormRequest
         return [
             'firstName' => [
                 'max:150',
-                'min:0',
+                'min:1',
                 'required',
                 'string',
             ],
             'email' => [
                 'max:150',
-                'min:0',
                 'required',
                 'email',
                 'unique:users' 
-
             ],
             'login' => [
                 'max:150',
-                'min:0',
+                'min:6',
                 'required',
                 'string',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/'
             ],
             'phoneNumber' => [
                 'max:150',
-                'min:0',
+                'min:11',
                 'required',
                 'string',
             ],
             'password' => [
                 'max:150',
-                'min:0',
+                'min:6',
                 'required',
                 'string',
-                'confirmed'
+                'confirmed',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,}$/'
+
             ],
             'password_confirmation' => [
                 'max:150',
-                'min:0',
+                'min:6',
                 'required',
                 'string',
             ],

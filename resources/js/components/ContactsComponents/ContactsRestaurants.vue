@@ -21,10 +21,13 @@ const mainStore = useMainStore();
 <style lang="scss" scoped>
 .contacts {
     &__list {
-        margin-top: 86px;
+        margin-top: 10%;
+        text-align: center;
         display: flex;
-        justify-content: space-between;
-        margin-bottom: 100px;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+        margin-bottom: 10%;
     }
 }
 </style>

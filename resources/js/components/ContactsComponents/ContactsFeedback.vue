@@ -64,9 +64,20 @@ import ButtonComponent from "../UI/ButtonComponent.vue";
         justify-content: center;
         gap: 50px;
         margin: 56px 0;
+        @media (max-width: $laptopScreen) {
+            margin: 20px 0;
+        }
        &-input{
         max-width: 620px;
-            width: 100%;
+        width: 100%;
+        @media (max-width: $laptopScreen) {
+            width: 40%;
+
+        }
+        @media (max-width: $mobileScreen) {
+              padding: 7px 0 7px 15px;
+
+        }
             @include inputStyle;
             &::placeholder {
                 color: rgba(162, 81, 51, 0.5);
@@ -79,21 +90,44 @@ import ButtonComponent from "../UI/ButtonComponent.vue";
        }
         &-btn {
             padding: 22px 100px;
+            @media (max-width: $tabletScreen) {
+                padding: 22px 50px;
+
+        }
+        @media (max-width: $mobileScreen) {
+                padding: 10px 20px;
+
+        }
         }
     }
     &-info {
         @include fontStyle(50px, 400, "Alumni Sans", $dark-brown);
     }
     &__socials {
-        margin-top: 100px;
+        margin-top: 10%;
         display: flex;
         justify-content: center;
         gap: 40px;
-        margin-bottom: 80px;
+        margin-bottom:10%;
         position: relative;
+      
+        &-item{
+            width: 100%;
+            @media (max-width: $mobileScreen) {
+                width: 70%;
 
+        }
+          
+        }
         &-link {
+            justify-content: center;
             display: flex;
+            max-width: 107px;
+            width: 100%;
+            @media (max-width: $mobileScreen) {
+                width: 50%;
+
+        }
             p {
                 color: $dark-brown;
             }

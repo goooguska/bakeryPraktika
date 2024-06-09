@@ -51,7 +51,6 @@
 }
 
 @mixin inputStyle {
-    width: 100%;
     @include fontStyle(30px, 500, "Alumni Sans", rgba(162, 81, 51, 0.5));
     border-radius: 30px;
     padding: 15px 0 15px 35px;
@@ -69,6 +68,12 @@
         height: 3px;
         background: $dark-brown;
         transition: 0.3s;
+        @media (max-width: $laptopScreen) {
+            height: 2px;
+        }
+        @media (max-width: $mobileScreen) {
+            height: 1px;
+        }
     }
     &::after {
         left: 50%;

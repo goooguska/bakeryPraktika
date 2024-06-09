@@ -3,7 +3,6 @@ import { ref } from "vue";
 import PopupProduct from "./PopupProduct.vue";
 import ButtonComponent from "./UI/ButtonComponent.vue";
 const showPopupProduct = ref(false);
-
 defineProps({
     product: {
         type: Object,
@@ -44,14 +43,19 @@ const toggleShowPopup = () => {
 @import "/resources/css/main.scss";
 
 .card {
-    max-width: 464px;
+    max-width: 460px;
     width: 100%;
     background-color: rgba(252, 252, 255, 1);
-
+    @media (max-width: $laptopScreen) {
+        width: 40%;
+    }
     &-image {
-        max-width: 464px;
+        max-width: 460px;
         width: 100%;
         border-radius: 30px;
+        @media (max-width: $laptopScreen) {
+            border-radius: 15px;
+        }
     }
     &__content {
         &-name {

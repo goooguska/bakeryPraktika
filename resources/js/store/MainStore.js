@@ -1,6 +1,8 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 export const useMainStore = defineStore("mainStore", () => {
+    const isOpen = ref(true);
+
     const showAuth = ref(false);
     const toggleShow = () => {
         showAuth.value = !showAuth.value;
@@ -49,11 +51,15 @@ export const useMainStore = defineStore("mainStore", () => {
             email: "pishkabakery@gmail.ru",
         },
     ]);
-
+    const toggleBurgerMenu = () => {
+        isOpen.value = !isOpen.value;
+    };
     return {
         restaurants,
         slides,
         showAuth,
+        isOpen,
         toggleShow,
+        toggleBurgerMenu,
     };
 });

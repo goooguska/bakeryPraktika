@@ -7,13 +7,16 @@ export const useUserStore = defineStore("userStore", () => {
     const authUser = ref(false);
     const accesToken = ref();
     const errorUser = ref();
+
     const getToken = () => {
         accesToken.value = localStorage.getItem("access_token");
     };
+
     const getInfoAboutUser = async () => {
-        const response = await api.post("/api/auth/login");
-        console.log(response);
+        const response = await api.post("/api/auth/me");
+        return response.data;
     };
+
     const loginUser = async (login, password) => {
         try {
             const response = await axios.post("/api/auth/login", {
@@ -24,6 +27,7 @@ export const useUserStore = defineStore("userStore", () => {
             login = "";
             password = "";
             router.push({ name: "main" });
+            getToken();
         } catch (error) {
             errorUser.value = error.response.data.error;
         }
@@ -47,16 +51,16 @@ export const useUserStore = defineStore("userStore", () => {
                 phoneNumber: phoneNumber,
             });
             localStorage.setItem("access_token", response.data.token);
+            getToken();
             router.push({ name: "main" });
-            console.log(response);
         } catch (error) {
             errorUser.value = error.response.data.error;
         }
     };
     const logoutUser = async () => {
-        const response = await api.post("api/auth/logout");
-        console.log(response);
+        await api.post("api/auth/logout");
         localStorage.removeItem("access_token");
+        getToken();
         router.push({ name: "main" });
     };
 

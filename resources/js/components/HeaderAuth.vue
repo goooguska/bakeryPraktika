@@ -9,7 +9,7 @@ onMounted(() => {
     userStore.getToken();
 });
 onUpdated(() => {
-    userStore.getToken();
+    const token = localStorage.getItem("access_token");
 });
 </script>
 
@@ -49,15 +49,17 @@ onUpdated(() => {
     @media (max-width: $mobileScreen) {
         justify-content: center;
     }
+    @media (max-width: $smallLaptopScreen) {
+        flex-direction: column;
+        gap: 0;
+    }
     &__cart {
         display: flex;
         align-items: center;
         gap: 10%;
-        @media (max-width: $mobileScreen) {
-            max-width: 42px;
-            width: 100%;
+        @media (max-width: $smallLaptopScreen) {
             img {
-                width: 60%;
+                display: none;
             }
         }
 
@@ -65,23 +67,33 @@ onUpdated(() => {
             cursor: pointer;
             @include fontStyle(30px, 400, "Alumni Sans", $dark-brown);
             @include underlineLink;
+            @media (max-width: $smallLaptopScreen) {
+                color: $light-brown;
+                background-color: transparent;
+                font-size: 30px;
+                padding: 0;
+            }
         }
     }
     &__account {
         display: flex;
         align-items: center;
         gap: 15px;
-
-        @media (max-width: $mobileScreen) {
-            max-width: 85px;
-            width: 100%;
+        @media (max-width: $smallLaptopScreen) {
             img {
-                width: 10%;
+                display: none;
             }
         }
+
         &-link {
             @include fontStyle(30px, 400, "Alumni Sans", $dark-brown);
             @include underlineLink;
+            @media (max-width: $smallLaptopScreen) {
+                color: $light-brown;
+                background-color: transparent;
+                font-size: 30px;
+                padding: 0;
+            }
         }
     }
 }
@@ -91,6 +103,16 @@ onUpdated(() => {
     gap: 15px;
     &-link {
         @include buttonStyle;
+        @media (max-width: $smallLaptopScreen) {
+            color: $light-brown;
+            background-color: transparent;
+            font-size: 30px;
+            padding: 0;
+        }
+    }
+    @media (max-width: $smallLaptopScreen) {
+        flex-direction: column;
+        gap: 0;
     }
 }
 .card {

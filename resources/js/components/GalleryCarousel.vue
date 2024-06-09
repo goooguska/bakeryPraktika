@@ -31,7 +31,6 @@ const mainStore = useMainStore();
 @import "/resources/css/style.css";
 @import "/resources/css/main.scss";
 .mySwiper {
-    margin-top: 80px;
 }
 .text {
     @include fontStyle(40px, 600, "Alumni Sans", $dark-brown);

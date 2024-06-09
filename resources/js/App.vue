@@ -6,7 +6,7 @@ import HeaderTemplate from "./templates/HeaderTemplate.vue";
 <template>
     <div class="container">
         <HeaderTemplate />
-        <RouterView class="content" />
+        <RouterView />
         <FooterTemplate />
     </div>
 </template>

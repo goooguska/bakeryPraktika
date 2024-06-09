@@ -9,6 +9,10 @@ const password = ref("");
 const password_confirmation = ref("");
 const email = ref("");
 const phoneNumber = ref("");
+const showPassword = ref(true);
+const showPass = () => {
+    showPassword.value = !showPassword.value;
+};
 </script>
 
 <template>
@@ -33,8 +37,18 @@ const phoneNumber = ref("");
                         class="registration__list-item-input"
                         placeholder="Пароль"
                         name="password"
-                        type="password"
                         v-model="password"
+                        :type="showPassword ? 'password' : 'text'"
+                    />
+                    <img
+                        @click="showPass"
+                        class="registration__list-item-img"
+                        :src="
+                            showPassword
+                                ? '/assets/icons/eye.svg'
+                                : '/assets/icons/eye-off.svg'
+                        "
+                        alt=""
                     />
                 </li>
 
@@ -44,8 +58,19 @@ const phoneNumber = ref("");
                         class="registration__list-item-input"
                         placeholder="Подтверждённый пароль"
                         name="password_confirmation"
-                        type="password"
+                        :type="showPassword ? 'password' : 'text'"
                         v-model="password_confirmation"
+                    />
+                    <img
+                        @click="showPass"
+                        :src="
+                            showPassword
+                                ? '/assets/icons/eye.svg'
+                                : '/assets/icons/eye-off.svg'
+                        "
+                        class="registration__list-item-img"
+                        src="/assets/icons/eye.svg"
+                        alt=""
                     />
                 </li>
             </ul>
@@ -115,25 +140,34 @@ const phoneNumber = ref("");
     display: flex;
     justify-content: space-around;
 }
+
 .registration {
     &__list {
         max-width: 620px;
         width: 100%;
         &-item {
+            position: relative;
             margin-bottom: 12px;
             @include fontStyle(50px, 400, "Alumni Sans", $dark-brown);
-        }
-        input {
-            max-width: 620px;
-            width: 100%;
-            @include inputStyle;
-            &::placeholder {
-                color: rgba(162, 81, 51, 0.5);
+            &-img {
+                cursor: pointer;
+                position: absolute;
+                max-width: 35px;
+                width: 100%;
+                bottom: 12%;
+                right: 5%;
             }
-            &:focus {
-                outline: none;
-                border-color: $dark-brown;
-                box-shadow: 0 0 5px $dark-brown;
+            &-input {
+                max-width: 620px;
+                @include inputStyle;
+                &::placeholder {
+                    color: rgba(162, 81, 51, 0.5);
+                }
+                &:focus {
+                    outline: none;
+                    border-color: $dark-brown;
+                    box-shadow: 0 0 5px $dark-brown;
+                }
             }
         }
     }
