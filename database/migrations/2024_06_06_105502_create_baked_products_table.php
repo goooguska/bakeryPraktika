@@ -23,9 +23,9 @@ return new class extends Migration
             ->onDelete('CASCADE')      
             ->onUpdate('RESTRICT');
 
-            $table->bigInteger('product_id') 
+            $table->bigInteger('productRecipe_id') 
             ->unsigned();
-            $table->foreign('product_id')   
+            $table->foreign('productRecipe_id')   
             ->references('id')       
             ->on('product_recipes')          
             ->onDelete('CASCADE')      

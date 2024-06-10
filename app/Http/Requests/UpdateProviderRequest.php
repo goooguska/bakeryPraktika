@@ -22,7 +22,28 @@ class UpdateProviderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => [
+                'max:155',
+                'min:0',
+                'string',
+                'unique:providers,name',
+            ],
+            'cost' => [
+                'integer',
+                'max:1000',
+                'min:0',
+            ],
+            'quantity' => [
+                'integer',
+                'max:99',
+                'min:0',
+            ],
+            'date_of_delivery' => [
+                'date'
+            ],
+            'ingredient_id' => [
+                'exists:ingredients,id',
+            ],
         ];
     }
 }

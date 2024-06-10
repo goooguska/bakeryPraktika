@@ -8,11 +8,13 @@
     </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "/resources/css/main.scss";
+
 div {
     text-align: center;
 }
 p {
-    font-size: 200px;
+    @include fontStyle(200px, 500, "Alumni Sans", $dark-brown);
 }
 </style>

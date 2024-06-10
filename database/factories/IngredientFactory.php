@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Provider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,6 +18,9 @@ class IngredientFactory extends Factory
     public function definition(): array
     {
         return [
+            'provider_id' => function(){
+                return Provider::inRandomOrder()->first()->id;
+            },
             'name' => $this->faker->unique()->words(1,true),
             'quantity' => $this->faker->randomNumber(2, false),
         ];

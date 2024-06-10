@@ -1,9 +1,12 @@
 <?php
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BakedProductController;
+use App\Http\Controllers\BakerController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductRecipeController;
+use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\RecipeIngredientController;
 use App\Http\Controllers\StoreController;
@@ -32,6 +35,12 @@ Route::prefix('v1')->group(function () {
     Route::apiResource('ingredients', IngredientController::class);
     Route::apiResource('recipeIngredients', RecipeIngredientController::class);
     Route::apiResource('productRecipes', ProductRecipeController::class);
+    Route::apiResource('providers', ProviderController::class);
+    Route::apiResource('bakers', BakerController::class);
+    Route::apiResource('bakedProducts', BakedProductController::class);
+
+
+
 
 });
 

@@ -22,6 +22,14 @@ class IngredientResource extends JsonResource
                 'name' => $this->name,
                 'quantity' =>(int) $this->quantity,
             ],
+            'relationships' => [
+                'provider' => [
+                    'links' => [
+                        'related' =>route('providers.show', ['provider' => $this->provider_id])
+                    ],
+                ],
+              
+            ],
             'links' => [
                 'self' => route('ingredients.show', ['ingredient' => $this->id]),
             ],

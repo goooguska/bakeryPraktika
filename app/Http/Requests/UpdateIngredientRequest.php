@@ -33,6 +33,9 @@ class UpdateIngredientRequest extends FormRequest
                 'max:2147483647',
                 'min:0',
             ],
+            'provider_id' => [
+                'exists:providers,id',
+            ],
         ];
     }
 }

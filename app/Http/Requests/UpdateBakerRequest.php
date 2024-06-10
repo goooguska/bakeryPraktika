@@ -22,7 +22,15 @@ class UpdateBakerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => [
+                'max:55',
+                'min:0',
+                'string',
+                'unique:bakers,name',
+            ],
+            'shift_at_work' => [
+                'date',
+            ],
         ];
     }
 }

@@ -21,13 +21,7 @@ return new class extends Migration
             ->default(0);
             $table->date("date_of_delivery");
             $table->timestamps();
-            $table->bigInteger('ingredient_id') 
-            ->unsigned();
-            $table->foreign('ingredient_id')   
-            ->references('id')       
-            ->on('ingredients')          
-            ->onDelete('CASCADE')      
-            ->onUpdate('RESTRICT');
+          
         });
     }
 

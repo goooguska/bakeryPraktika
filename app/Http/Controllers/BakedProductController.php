@@ -5,46 +5,39 @@ namespace App\Http\Controllers;
 use App\Models\BakedProduct;
 use App\Http\Requests\StoreBakedProductRequest;
 use App\Http\Requests\UpdateBakedProductRequest;
+use App\Http\Resources\BakedProductCollection;
+use App\Http\Resources\BakedProductResource;
 
 class BakedProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $bakedProducts = BakedProduct::all();
+        return new BakedProductCollection($bakedProducts);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreBakedProductRequest $request)
     {
-        //
+        $data = $request->validated();
+        $bakedProduct = BakedProduct::create($data);
+        return response()->noContent(201)->withHeaders([
+            'Location' => route('bakedProducts.show', [
+                'bakedProduct' => $bakedProduct->id,
+            ]),
+        ]);
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(BakedProduct $bakedProduct)
     {
-        //
+        return new BakedProductResource($bakedProduct);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateBakedProductRequest $request, BakedProduct $bakedProduct)
     {
-        //
+        $data = $request->validated();
+        $bakedProduct->update($data);
+        return response()->noContent(204);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(BakedProduct $bakedProduct)
     {
-        //
+        $bakedProduct->delete();
+        return response()->noContent(204);
     }
 }

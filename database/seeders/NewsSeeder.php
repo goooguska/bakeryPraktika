@@ -16,7 +16,7 @@ class NewsSeeder extends Seeder
     {
         
 
-        NewsFactory::new()->count(6)->create();
+        NewsFactory::new()->count(5)->create();
 
     }
 }

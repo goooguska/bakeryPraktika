@@ -12,6 +12,7 @@ class Ingredient extends Model
     protected $fillable = [
         'name',
         'quantity',
+        'provider_id'
     ];
 
     use HasFactory;
@@ -23,4 +24,5 @@ class Ingredient extends Model
     {
         return $this->belongsTo(Provider::class);
     }
+
 }

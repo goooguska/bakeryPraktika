@@ -105,11 +105,14 @@ defineProps({
     padding: 130px 50px 50px 50px;
     background-color: $white;
     width: 100%;
-    max-width: 1145px;
-    max-height: 750px;
-    height: 100%;
+    max-width: 800px;
     border-radius: 30px;
+    width: 100%;
+    @media (max-width: $laptopScreen) {
+        width: 70%;
 
+        padding: 70px 25px 25px 25px;
+    }
     &__close {
         max-width: 100px;
         width: 100%;
@@ -117,9 +120,15 @@ defineProps({
         top: 2%;
         right: 5%;
         cursor: pointer;
+        @media (max-width: $laptopScreen) {
+            width: 10%;
+        }
     }
     &__content {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
         &-image {
             width: 100%;
             max-width: 500px;
@@ -127,6 +136,9 @@ defineProps({
         }
         &-info {
             margin-left: 30px;
+            @media (max-width: $laptopScreen) {
+                margin-left: 0px;
+            }
         }
         &-text {
             &-title {
@@ -142,6 +154,10 @@ defineProps({
             background-color: #f4f4f7;
             border-radius: 30px;
             text-align: center;
+            @media (max-width: $laptopScreen) {
+                padding: 5px 5px;
+                margin-top: 20px;
+            }
             &-value {
                 @include fontStyle(20px, 500, "Alumni Sans", $dark-brown);
             }
@@ -159,6 +175,11 @@ defineProps({
                 display: flex;
                 justify-content: center;
                 gap: 30px;
+                @media (max-width: $laptopScreen) {
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                    gap: 5px;
+                }
                 &-item {
                     &-text {
                         @include fontStyle(
@@ -184,7 +205,12 @@ defineProps({
         margin-top: 30px;
         display: flex;
         align-items: center;
+        justify-content: center;
+
         gap: 60px;
+        @media (max-width: $mobileScreen) {
+            gap: 0px;
+        }
         &-text {
             max-width: 570px;
             &-title {

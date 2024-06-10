@@ -18,12 +18,15 @@ class DatabaseSeeder extends Seeder
         User::factory(0)->create();
 
         $this->call([
+            ProviderSeeder::class,
             NewsSeeder::class,
             RecipeSeeder::class,
             IngredientSeeder::class,
             RecipeIngredientSeeder::class,
             ProductSeeder::class,
             ProductRecipeSeeder::class,
+            BakerSeeder::class,
+            BakedProductSeeder::class,
 
 
 

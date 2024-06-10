@@ -22,7 +22,19 @@ class UpdateBakedProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            
+            'baker_id' => [
+                'exists:bakers,id',
+            ],
+            'productRecipe_id' => [
+                'exists:productRecipes,id',
+            ],
+            'date_baking' => [
+                'date',
+            ],
+            'date_sale' => [
+                'date',
+            ],
         ];
     }
 }

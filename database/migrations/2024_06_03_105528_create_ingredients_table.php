@@ -18,6 +18,15 @@ return new class extends Migration
 
         $table->integer('quantity')
             ->default(0);
+            $table->bigInteger('provider_id') 
+            ->unsigned();
+            $table->foreign('provider_id')   
+            ->references('id')       
+            ->on('providers')          
+            ->onDelete('CASCADE')      
+            ->onUpdate('RESTRICT');
+
+
             $table->timestamps();
 
           

@@ -17,7 +17,8 @@ class BakerFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->unique()->name(),
+            'shift_at_work' => $this->faker->date(),
         ];
     }
 }

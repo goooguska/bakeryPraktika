@@ -55,6 +55,9 @@
     border-radius: 30px;
     padding: 15px 0 15px 35px;
     border: 2px solid $dark-brown;
+    @media (max-width: $mobileScreen) {
+        padding: 7px 0 7px 15px;
+    }
 }
 
 @mixin underlineLink {

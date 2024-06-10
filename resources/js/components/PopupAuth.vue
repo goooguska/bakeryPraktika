@@ -14,7 +14,7 @@ const signIn = () => {
     mainStore.toggleShow();
 };
 </script>
-
+extraLargeScreen
 <template>
     <div class="popup">
         <img
@@ -25,7 +25,7 @@ const signIn = () => {
         />
         <h2 class="popup__title">Авторизация</h2>
         <div class="popup__item">
-            <label for="login"> Введите ваш логин</label>
+            <p class="popup__item-text">Введите ваш логин</p>
             <input
                 class="popup__item-input"
                 placeholder="Логин"
@@ -35,7 +35,7 @@ const signIn = () => {
             />
         </div>
         <div class="popup__item">
-            <label for="password"> Введите ваш пароль</label>
+            <p class="popup__item-text">Введите ваш пароль</p>
             <input
                 class="popup__item-input"
                 placeholder="Пароль"
@@ -72,10 +72,8 @@ const signIn = () => {
     position: relative;
     text-align: center;
     background-color: $white;
-    width: 100%;
+    width: 70%;
     max-width: 846px;
-    max-height: 800px;
-    height: 100%;
     border-radius: 30px;
     &__close {
         max-width: 100px;
@@ -88,14 +86,17 @@ const signIn = () => {
             width: 50%;
         }
         @media (max-width: $tabletScreen) {
-            width: 30%;
-        }
-        @media (max-width: $mobileScreen) {
-            width: 15%;
+            width: 10%;
         }
     }
     &__title {
         margin-bottom: 70px;
+        @media (max-width: $extraLargeScreen) {
+            margin-bottom: 40px;
+        }
+        @media (max-width: $tabletScreen) {
+            margin-bottom: 20px;
+        }
     }
     &__item {
         @include fontStyle(50px, 400, "Alumni Sans", $dark-brown);
@@ -106,6 +107,9 @@ const signIn = () => {
             margin: 0 auto;
             max-width: 620px;
             width: 100%;
+            @media (max-width: $laptopScreen) {
+                width: 70%;
+            }
             @include inputStyle;
             &::placeholder {
                 color: rgba(162, 81, 51, 0.5);
@@ -116,15 +120,22 @@ const signIn = () => {
                 box-shadow: 0 0 5px $dark-brown;
             }
         }
+        &-text {
+        }
     }
     &__btns {
         margin-top: 20px;
+        padding-bottom: 20px;
         &-link {
             @include buttonStyle;
         }
         &-text {
             margin: 25px 0;
             @include fontStyle(30px, 400, "Alumni Sans", $dark-brown);
+
+            @media (max-width: $tabletScreen) {
+                margin: 10px 0;
+            }
         }
     }
 }

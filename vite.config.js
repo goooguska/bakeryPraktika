@@ -8,7 +8,7 @@ export default defineConfig({
             input: [
                 "resources/css/main.scss",
                 "resources/js/app.js",
-                "public/",
+                "public/assets",
             ],
             refresh: true,
         }),

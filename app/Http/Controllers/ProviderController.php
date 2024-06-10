@@ -5,46 +5,40 @@ namespace App\Http\Controllers;
 use App\Models\Provider;
 use App\Http\Requests\StoreProviderRequest;
 use App\Http\Requests\UpdateProviderRequest;
+use App\Http\Resources\ProviderCollection;
+use App\Http\Resources\ProviderResource;
 
 class ProviderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $providers = Provider::all();
+        return new ProviderCollection($providers);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreProviderRequest $request)
     {
-        //
+        $data = $request->validated();
+        $provider = Provider::create($data);
+        return response()->noContent(201)->withHeaders([
+            'Location' => route('providers.show', [
+                'provider' => $provider->id,
+            ]),
+        ]);
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Provider $provider)
     {
-        //
+        return new ProviderResource($provider);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateProviderRequest $request, Provider $provider)
     {
-        //
+        $data = $request->validated();
+        $provider->update($data);
+        return response()->noContent(204);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Provider $provider)
     {
-        //
+        $provider->delete();
+        return response()->noContent(204);
     }
 }

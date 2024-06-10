@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Baker extends Model
 {
+    protected $fillable = [
+        'name',
+        'shift_at_work',
+    ];
     use HasFactory;
 }

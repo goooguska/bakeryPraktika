@@ -17,7 +17,10 @@ class ProviderFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->unique()->company(),
+            'cost' => $this->faker->randomNumber(3, true),
+            'quantity' => $this->faker->randomNumber(2, true),
+            'date_of_delivery' => $this->faker->date(),
         ];
     }
 }

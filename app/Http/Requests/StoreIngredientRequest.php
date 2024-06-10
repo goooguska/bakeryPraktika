@@ -35,6 +35,10 @@ class StoreIngredientRequest extends FormRequest
                 'min:0',
                 'required',
             ],
+            'provider_id' => [
+                'exists:providers,id',
+                'required',
+            ],
         ];
     }
 }

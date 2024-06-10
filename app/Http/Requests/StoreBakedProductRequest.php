@@ -22,7 +22,23 @@ class StoreBakedProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+
+            'baker_id' => [
+                'exists:bakers,id',
+                'required',
+            ],
+            'productRecipe_id' => [
+                'exists:productRecipes,id',
+                'required',
+            ],
+            'date_baking' => [
+                'date',
+                'required',
+            ],
+            'date_sale' => [
+                'date',
+                'required',
+            ],
         ];
     }
 }

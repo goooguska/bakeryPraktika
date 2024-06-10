@@ -22,7 +22,18 @@ class StoreBakerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => [
+                'max:155',
+                'min:0',
+                'required',
+                'string',
+                'unique:bakers,name',
+            ],
+            'shift_at_work' => [
+                'date',
+                'required',
+            ],
+  
         ];
     }
 }

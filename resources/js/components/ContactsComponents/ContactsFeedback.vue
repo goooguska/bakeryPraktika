@@ -70,15 +70,13 @@ import ButtonComponent from "../UI/ButtonComponent.vue";
        &-input{
         max-width: 620px;
         width: 100%;
+        @include inputStyle;
+
         @media (max-width: $laptopScreen) {
             width: 40%;
 
         }
-        @media (max-width: $mobileScreen) {
-              padding: 7px 0 7px 15px;
-
-        }
-            @include inputStyle;
+    
             &::placeholder {
                 color: rgba(162, 81, 51, 0.5);
             }
@@ -108,7 +106,7 @@ import ButtonComponent from "../UI/ButtonComponent.vue";
         display: flex;
         justify-content: center;
         gap: 40px;
-        margin-bottom:10%;
+        margin-bottom: 5px;
         position: relative;
       
         &-item{
@@ -135,6 +133,8 @@ import ButtonComponent from "../UI/ButtonComponent.vue";
     }
 }
 .small {
-    color: $dark-brown;
+    // color: $dark-brown;
+    @include fontStyle(20px, 400, "Alumni Sans", $dark-brown);
+
 }
 </style>

@@ -1,15 +1,16 @@
 <script setup>
-import { onMounted, onUpdated } from "vue";
+import { onMounted } from "vue";
 import { useMainStore } from "../store/MainStore";
 import { useUserStore } from "../store/UserStore";
 import PopupAuth from "./PopupAuth.vue";
 const userStore = useUserStore();
 const mainStore = useMainStore();
+const toggleValues = () => {
+    mainStore.toggleShow();
+    // mainStore.toggleBurgerMenu();
+};
 onMounted(() => {
     userStore.getToken();
-});
-onUpdated(() => {
-    const token = localStorage.getItem("access_token");
 });
 </script>
 
@@ -22,17 +23,25 @@ onUpdated(() => {
         <div class="auth__account">
             <img src="/assets/icons/account.svg" alt="account" />
 
-            <RouterLink class="auth__account-link" to="/account/profile">
+            <RouterLink
+                @click="mainStore.toggleBurgerMenu"
+                class="auth__account-link"
+                to="/account/profile"
+            >
                 ЛИЧНЫЙ КАБИНЕТ
             </RouterLink>
         </div>
     </div>
     <div v-else class="nonauth">
-        <button class="nonauth-link" @click="mainStore.toggleShow">
-            ВОЙТИ
-        </button>
+        <button class="nonauth-link" @click="toggleValues">ВОЙТИ</button>
 
-        <RouterLink class="nonauth-link" to="/reg"> РЕГИСТРАЦИЯ</RouterLink>
+        <RouterLink
+            @click="mainStore.toggleBurgerMenu"
+            class="nonauth-link"
+            to="/reg"
+        >
+            РЕГИСТРАЦИЯ</RouterLink
+        >
     </div>
     <div v-show="mainStore.showAuth" class="card">
         <PopupAuth />
@@ -116,7 +125,7 @@ onUpdated(() => {
     }
 }
 .card {
-    z-index: 5;
+    z-index: 6;
     width: 100%;
     position: fixed;
     inset: 0;

@@ -21,7 +21,9 @@ const showPass = () => {
         <form class="fields">
             <ul class="registration__list">
                 <li class="registration__list-item">
-                    <label for="login">Введите ваш логин </label>
+                    <p class="registration__list-item-text">
+                        Введите ваш логин
+                    </p>
                     <input
                         class="registration__list-item-input"
                         placeholder="Логин"
@@ -32,51 +34,34 @@ const showPass = () => {
                 </li>
 
                 <li class="registration__list-item">
-                    <label for="password">Введите ваш пароль </label>
+                    <p class="registration__list-item-text">
+                        Введите ваш пароль
+                    </p>
                     <input
                         class="registration__list-item-input"
                         placeholder="Пароль"
                         name="password"
+                        type="password"
                         v-model="password"
-                        :type="showPassword ? 'password' : 'text'"
-                    />
-                    <img
-                        @click="showPass"
-                        class="registration__list-item-img"
-                        :src="
-                            showPassword
-                                ? '/assets/icons/eye.svg'
-                                : '/assets/icons/eye-off.svg'
-                        "
-                        alt=""
                     />
                 </li>
 
                 <li class="registration__list-item">
-                    <label for="password_confirm">Подтверждённый пароль </label>
+                    <p class="registration__list-item-text">
+                        Подтверждённый пароль
+                    </p>
                     <input
                         class="registration__list-item-input"
                         placeholder="Подтверждённый пароль"
                         name="password_confirmation"
-                        :type="showPassword ? 'password' : 'text'"
+                        type="password"
                         v-model="password_confirmation"
-                    />
-                    <img
-                        @click="showPass"
-                        :src="
-                            showPassword
-                                ? '/assets/icons/eye.svg'
-                                : '/assets/icons/eye-off.svg'
-                        "
-                        class="registration__list-item-img"
-                        src="/assets/icons/eye.svg"
-                        alt=""
                     />
                 </li>
             </ul>
             <ul class="registration__list">
                 <li class="registration__list-item">
-                    <label for="firstName"> Введите ваше имя </label>
+                    <p class="registration__list-item-text">Введите ваше имя</p>
                     <input
                         class="registration__list-item-input"
                         placeholder="Имя"
@@ -87,7 +72,9 @@ const showPass = () => {
                 </li>
 
                 <li class="registration__list-item">
-                    <label for="name"> Введите ваш email</label>
+                    <p class="registration__list-item-text">
+                        Введите ваш email
+                    </p>
                     <input
                         class="registration__list-item-input"
                         placeholder="Email"
@@ -139,6 +126,10 @@ const showPass = () => {
     margin-top: 100px;
     display: flex;
     justify-content: space-around;
+    gap: 20px;
+    @media (max-width: $laptopScreen) {
+        margin-top: 20px;
+    }
 }
 
 .registration {
@@ -146,9 +137,12 @@ const showPass = () => {
         max-width: 620px;
         width: 100%;
         &-item {
+            display: flex;
+            flex-direction: column;
             position: relative;
             margin-bottom: 12px;
             @include fontStyle(50px, 400, "Alumni Sans", $dark-brown);
+
             &-img {
                 cursor: pointer;
                 position: absolute;
@@ -175,6 +169,9 @@ const showPass = () => {
         margin-top: 60px;
         display: flex;
         justify-content: center;
+        @media (max-width: $tabletScreen) {
+            margin-top: 0;
+        }
         &-input {
             max-width: 620px;
             width: 100%;

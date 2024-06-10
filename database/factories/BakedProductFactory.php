@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Baker;
+use App\Models\ProductRecipe;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,15 @@ class BakedProductFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'baker_id' => function(){
+                return Baker::inRandomOrder()->first()->id;
+            },
+            'productRecipe_id' => function(){
+                return ProductRecipe::inRandomOrder()->first()->id;
+            },
+            'date_baking' => $this->faker->date(),
+            'date_sale' => $this->faker->date(),
+
         ];
     }
 }
