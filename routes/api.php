@@ -3,6 +3,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BakedProductController;
 use App\Http\Controllers\BakerController;
 use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductRecipeController;
@@ -41,7 +42,8 @@ Route::prefix('v1')->group(function () {
 });
 
 Route::post('/users',StoreController::class);
-Route::post('/contacts',StoreController::class);
+// Route::post('/mail',StoreController::class);
+Route::post('/mail', [MailController::class, 'send']);
 
 
 Route::controller(AuthController::class)->middleware(['api' ])->prefix('auth')

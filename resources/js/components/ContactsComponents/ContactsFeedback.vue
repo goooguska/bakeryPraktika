@@ -1,11 +1,17 @@
 <script setup>
+import axios from "axios";
 import { ref } from "vue";
 import ButtonComponent from "../UI/ButtonComponent.vue";
 const feedback = ref('')
+const send = async () =>{
+    const res = await axios.post('/api/mail')
+    console.log(res); 
+}
 </script>
 
 <template>
     <div class="feedback">
+        <button @click="send">send</button>
         <p class="feedback-info">Узнайте первым о наших новинках</p>
         <div class="feedback__items">
             <input class="feedback__items-input" v-model="feedback" placeholder="Ваша электронная почта">
