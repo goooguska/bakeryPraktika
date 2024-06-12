@@ -13,10 +13,10 @@ export const useUserStore = defineStore("userStore", () => {
     const getToken = () => {
         accesToken.value = localStorage.getItem("access_token");
     };
-    const sendEmail = async (mail) => {
+    const sendEmail = async (email) => {
         try {
-            const res = await axios.post("/api/mail", { email: mail });
-            console.log(res.config.data);
+            const res = await axios.post("/api/mail", { email: email });
+            console.log(res);
         } catch (error) {
             console.log(error);
         }

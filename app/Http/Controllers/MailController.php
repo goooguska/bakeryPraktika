@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMailRequest;
 use App\Mail\Feedback;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
 
-   public function __invoke()
+   public function __invoke(StoreMailRequest $request)
    {
-      // return $data;
-      // Mail::to($email)->send(new Feedback());
+      $data = $request->validated();
+      Mail::to($data['email'])->send(new Feedback());
    
    }
   
