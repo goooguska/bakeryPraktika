@@ -1,24 +1,18 @@
 <script setup>
-import axios from "axios";
 import { ref } from "vue";
-import ButtonComponent from "../UI/ButtonComponent.vue";
-const feedback = ref('')
-const send = async () =>{
-    const res = await axios.post('/api/mail')
-    console.log(res); 
-}
+import { useUserStore } from "../../store/UserStore";
+const userMail = ref('')
+const userStore = useUserStore()
 </script>
 
 <template>
     <div class="feedback">
-        <button @click="send">send</button>
         <p class="feedback-info">Узнайте первым о наших новинках</p>
         <div class="feedback__items">
-            <input class="feedback__items-input" v-model="feedback" placeholder="Ваша электронная почта">
+            <input class="feedback__items-input" v-model="userMail" placeholder="Ваша электронная почта">
             </input>
-            <ButtonComponent class="feedback__items-btn"
-                >Подписаться
-            </ButtonComponent>
+            <input class="feedback__items-btn" value="Подписаться" @click.prevent="userStore.sendEmail(userMail)" type="submit">
+        
         </div>
 
         <p class="feedback-info">
@@ -95,6 +89,8 @@ const send = async () =>{
             }
        }
         &-btn {
+            @include buttonStyle;
+
             padding: 22px 100px;
             @media (max-width: $tabletScreen) {
                 padding: 22px 50px;
@@ -141,7 +137,6 @@ const send = async () =>{
     }
 }
 .small {
-    // color: $dark-brown;
     @include fontStyle(20px, 400, "Alumni Sans", $dark-brown);
 
 }

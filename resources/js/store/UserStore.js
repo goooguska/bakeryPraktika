@@ -13,19 +13,31 @@ export const useUserStore = defineStore("userStore", () => {
     const getToken = () => {
         accesToken.value = localStorage.getItem("access_token");
     };
+    const sendEmail = async (mail) => {
+        try {
+            const res = await axios.post("/api/mail", { email: mail });
+            console.log(res.config.data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const getInfoAboutUser = async () => {
-        const response = await api.post(
-            "/api/auth/me",
-            {},
-            {
-                headers: {
-                    Authorization: `Bearer ${accesToken.value}`,
-                },
-            }
-        );
+        try {
+            const response = await api.post(
+                "/api/auth/me",
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${accesToken.value}`,
+                    },
+                }
+            );
 
-        return response.data;
+            return response.data;
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const loginUser = async (login, password) => {
@@ -70,10 +82,14 @@ export const useUserStore = defineStore("userStore", () => {
         }
     };
     const logoutUser = async () => {
+        try {
+            localStorage.removeItem("access_token");
+            router.push({ name: "main" });
+            getToken();
+        } catch (error) {
+            console.log(error);
+        }
         // await api.post("api/auth/logout");
-        localStorage.removeItem("access_token");
-        router.push({ name: "main" });
-        getToken();
     };
 
     return {
@@ -82,6 +98,7 @@ export const useUserStore = defineStore("userStore", () => {
         getToken,
         logoutUser,
         getInfoAboutUser,
+        sendEmail,
         authUser,
         accesToken,
         errorUser,

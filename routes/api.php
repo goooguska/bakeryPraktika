@@ -42,8 +42,7 @@ Route::prefix('v1')->group(function () {
 });
 
 Route::post('/users',StoreController::class);
-// Route::post('/mail',StoreController::class);
-Route::post('/mail', [MailController::class, 'send']);
+Route::post('/mail', MailController::class);
 
 
 Route::controller(AuthController::class)->middleware(['api' ])->prefix('auth')

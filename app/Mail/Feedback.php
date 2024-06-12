@@ -17,7 +17,7 @@ class Feedback extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(private string $title, private string  $body)
+    public function __construct()
     {
     }
 
@@ -28,7 +28,7 @@ class Feedback extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome to laracoding.com EmailDemo',
+            subject: 'Welcome ',
         );
     }
 
@@ -39,10 +39,7 @@ class Feedback extends Mailable
     {
         return new Content(
             view: 'email',
-            with: [
-                'title' => $this->title,
-                'body' => $this->body,
-            ],
+          
         );
     }
 

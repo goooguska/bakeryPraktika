@@ -9,14 +9,11 @@ use Illuminate\Support\Facades\Mail;
 class MailController extends Controller
 {
 
-   public function send()
+   public function __invoke()
    {
-      $title = 'adadadada';
-      $body = 'Thank you for participating!';
+      // return $data;
+      // Mail::to($email)->send(new Feedback());
    
-      Mail::to('cahalego@mail.ru')->send(new Feedback($title, $body));
-   
-      return "Email sent successfully!";
    }
   
 }
