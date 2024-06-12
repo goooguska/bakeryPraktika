@@ -11,10 +11,8 @@ const signIn = () => {
     userStore.loginUser(login.value, password.value);
     login.value = "";
     password.value = "";
-    mainStore.toggleShow();
 };
 </script>
-extraLargeScreen
 <template>
     <div class="popup">
         <img
@@ -44,7 +42,7 @@ extraLargeScreen
                 v-model="password"
             />
         </div>
-        <p v-if="userStore.errorUser !== ''" class="error">
+        <p class="error">
             {{ userStore.errorUser }}
         </p>
         <div class="popup__btns">
@@ -57,7 +55,11 @@ extraLargeScreen
 
             <p class="popup__btns-text">ИЛИ</p>
 
-            <RouterLink class="popup__btns-link" to="/reg">
+            <RouterLink
+                @click="mainStore.toggleShow"
+                class="popup__btns-link"
+                to="/reg"
+            >
                 Зарегистрироваться</RouterLink
             >
         </div>

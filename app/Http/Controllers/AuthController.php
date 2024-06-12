@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -21,14 +23,22 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login()
+    public function login(Request $request)
     {
-        $credentials = request(['login', 'password']);
+        $credentials = $request->only('login', 'password');
 
-        if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Неправильный пароль или логин'], 401);
+        $user = User::where('login', $credentials['login'])->first();
+    
+        if (!$user) {
+            return response()->json(['error' => 'Неправильный логин'], 401);
         }
-
+    
+        if (!Auth::attempt(['login' => $credentials['login'], 'password' => $credentials['password']])) {
+            return response()->json(['error' => 'Неправильный пароль'], 401);
+        }
+    
+        $token = Auth::attempt($credentials);
+    
         return $this->respondWithToken($token);
     }
 

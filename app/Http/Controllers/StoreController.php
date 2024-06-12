@@ -14,9 +14,26 @@ class StoreController extends Controller
     $data = array_merge(['role' => 'customer'], $data);
     $data['password'] = Hash::make($data['password']);
 
-    $user = User::where('login',$data['login'])->first();
-    if ($user) return response( ['error'=>'Такой крутой логин или email существует, бро'],403);
+    $userWithLogin = User::where('login', $data['login'])->first();
+    if ($userWithLogin) {
+       
+        return response( ['error'=>'Пользователь с таким логином уже существует'],403);
+
+    }
+    
+    $userWithEmail = User::where('email', $data['email'])->first();
+    if ($userWithEmail) {
+        return response( ['error'=>'Пользователь с таким email уже существует'],403);
+
+    }
+    
+    $userWithPhoneNumber = User::where('phoneNumber', $data['phoneNumber'])->first();
+    if ($userWithPhoneNumber) {
+        return response( ['error'=>'Пользователь с таким номером телефона уже существует'],403);
+    }
     $user=User::create($data);
+
+
 
     $token = auth()->tokenById($user->id);
     return response(['token'=>$token]);

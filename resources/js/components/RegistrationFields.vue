@@ -9,10 +9,6 @@ const password = ref("");
 const password_confirmation = ref("");
 const email = ref("");
 const phoneNumber = ref("");
-const showPassword = ref(true);
-const showPass = () => {
-    showPassword.value = !showPassword.value;
-};
 </script>
 
 <template>

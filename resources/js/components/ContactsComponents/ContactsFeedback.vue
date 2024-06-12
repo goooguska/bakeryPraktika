@@ -1,12 +1,14 @@
 <script setup>
+import { ref } from "vue";
 import ButtonComponent from "../UI/ButtonComponent.vue";
+const feedback = ref('')
 </script>
 
 <template>
     <div class="feedback">
         <p class="feedback-info">Узнайте первым о наших новинках</p>
         <div class="feedback__items">
-            <input class="feedback__items-input" placeholder="Ваша электронная почта">
+            <input class="feedback__items-input" v-model="feedback" placeholder="Ваша электронная почта">
             </input>
             <ButtonComponent class="feedback__items-btn"
                 >Подписаться

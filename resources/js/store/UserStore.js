@@ -3,17 +3,28 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 import api from "../api";
 import router from "../router";
+import { useMainStore } from "./MainStore";
 export const useUserStore = defineStore("userStore", () => {
     const authUser = ref(false);
     const accesToken = ref();
     const errorUser = ref();
+    const mainStore = useMainStore();
 
     const getToken = () => {
         accesToken.value = localStorage.getItem("access_token");
     };
 
     const getInfoAboutUser = async () => {
-        const response = await api.post("/api/auth/me");
+        const response = await api.post(
+            "/api/auth/me",
+            {},
+            {
+                headers: {
+                    Authorization: `Bearer ${accesToken.value}`,
+                },
+            }
+        );
+
         return response.data;
     };
 
@@ -28,6 +39,7 @@ export const useUserStore = defineStore("userStore", () => {
             password = "";
             router.push({ name: "main" });
             getToken();
+            mainStore.toggleShow();
         } catch (error) {
             errorUser.value = error.response.data.error;
         }
@@ -58,10 +70,10 @@ export const useUserStore = defineStore("userStore", () => {
         }
     };
     const logoutUser = async () => {
-        await api.post("api/auth/logout");
+        // await api.post("api/auth/logout");
         localStorage.removeItem("access_token");
-        getToken();
         router.push({ name: "main" });
+        getToken();
     };
 
     return {
