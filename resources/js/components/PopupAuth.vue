@@ -12,6 +12,9 @@ const signIn = () => {
     login.value = "";
     password.value = "";
 };
+const forgotPassword = () => {
+    console.log(1);
+};
 </script>
 <template>
     <div class="popup">
@@ -42,6 +45,12 @@ const signIn = () => {
                 v-model="password"
             />
         </div>
+        <RouterLink
+            to="/forgot-password"
+            class="forgot-password"
+            @click="mainStore.toggleShow"
+            >Забыли пароль?</RouterLink
+        >
         <p class="error">
             {{ userStore.errorUser }}
         </p>
@@ -68,7 +77,11 @@ const signIn = () => {
 
 <style lang="scss" scoped>
 @import "/resources/css/main.scss";
-
+.forgot-password {
+    margin-top: 5px;
+    cursor: pointer;
+    text-decoration: underline;
+}
 .popup {
     padding-top: 50px;
     position: relative;

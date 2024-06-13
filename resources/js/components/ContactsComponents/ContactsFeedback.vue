@@ -1,18 +1,50 @@
 <script setup>
 import { ref } from "vue";
 import { useUserStore } from "../../store/UserStore";
-const userMail = ref('')
-const userStore = useUserStore()
+const userMail = ref("");
+const showPopupFeedbackSend = ref("");
+
+const sendUserEmail = async () => {
+    const response = await userStore.sendEmail(userMail.value);
+    response
+        ? (showPopupFeedbackSend.value = true)
+        : (showPopupFeedbackSend.value = false);
+    userMail.value = "";
+};
+const userStore = useUserStore();
 </script>
 
 <template>
     <div class="feedback">
         <p class="feedback-info">Узнайте первым о наших новинках</p>
         <div class="feedback__items">
-            <input class="feedback__items-input" v-model="userMail" placeholder="Ваша электронная почта">
-            </input>
-            <input class="feedback__items-btn" value="Подписаться" @click.prevent="userStore.sendEmail(userMail)" type="submit">
-        
+            <input
+                class="feedback__items-input"
+                v-model="userMail"
+                placeholder="Ваша электронная почта"
+            />
+            <input
+                class="feedback__items-btn"
+                value="Подписаться"
+                @click.prevent="sendUserEmail"
+                type="submit"
+            />
+            <div
+                v-show="showPopupFeedbackSend === true"
+                class="feedback__items-popup"
+            >
+                <p class="feedback__items-popup-text">
+                    Вы успешно подписались на новости!
+                </p>
+            </div>
+            <div
+                v-show="showPopupFeedbackSend === false"
+                class="feedback__items-popup"
+            >
+                <p class="feedback__items-popup-text">
+                    Заполните корректно поле email для получения новостей
+                </p>
+            </div>
         </div>
 
         <p class="feedback-info">
@@ -66,19 +98,19 @@ const userStore = useUserStore()
         justify-content: center;
         gap: 50px;
         margin: 56px 0;
+        position: relative;
         @media (max-width: $laptopScreen) {
             margin: 20px 0;
         }
-       &-input{
-        max-width: 620px;
-        width: 100%;
-        @include inputStyle;
+        &-input {
+            max-width: 620px;
+            width: 100%;
+            @include inputStyle;
 
-        @media (max-width: $laptopScreen) {
-            width: 40%;
+            @media (max-width: $laptopScreen) {
+                width: 40%;
+            }
 
-        }
-    
             &::placeholder {
                 color: rgba(162, 81, 51, 0.5);
             }
@@ -87,19 +119,26 @@ const userStore = useUserStore()
                 border-color: $dark-brown;
                 box-shadow: 0 0 5px $dark-brown;
             }
-       }
+        }
         &-btn {
             @include buttonStyle;
 
             padding: 22px 100px;
             @media (max-width: $tabletScreen) {
                 padding: 22px 50px;
-
-        }
-        @media (max-width: $mobileScreen) {
+            }
+            @media (max-width: $mobileScreen) {
                 padding: 10px 20px;
-
+            }
         }
+        &-popup {
+            position: absolute;
+            background-color: white;
+            top: -30%;
+            left: 25%;
+            &-text {
+                @include fontStyle(20px, 400, "Alumni Sans", $dark-brown);
+            }
         }
     }
     &-info {
@@ -112,14 +151,12 @@ const userStore = useUserStore()
         gap: 40px;
         margin-bottom: 5px;
         position: relative;
-      
-        &-item{
+
+        &-item {
             width: 100%;
             @media (max-width: $mobileScreen) {
                 width: 70%;
-
-        }
-          
+            }
         }
         &-link {
             justify-content: center;
@@ -128,8 +165,7 @@ const userStore = useUserStore()
             width: 100%;
             @media (max-width: $mobileScreen) {
                 width: 50%;
-
-        }
+            }
             p {
                 color: $dark-brown;
             }
@@ -138,6 +174,5 @@ const userStore = useUserStore()
 }
 .small {
     @include fontStyle(20px, 400, "Alumni Sans", $dark-brown);
-
 }
 </style>

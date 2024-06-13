@@ -15,10 +15,11 @@ export const useUserStore = defineStore("userStore", () => {
     };
     const sendEmail = async (email) => {
         try {
-            const res = await axios.post("/api/mail", { email: email });
-            console.log(res);
+            await axios.post("/api/mail", { email: email });
+            return true;
         } catch (error) {
             console.log(error);
+            return false;
         }
     };
 

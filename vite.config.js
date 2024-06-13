@@ -8,7 +8,7 @@ export default defineConfig({
             input: [
                 "resources/css/main.scss",
                 "resources/js/app.js",
-                "/public",
+                // "/public/assets",
             ],
             refresh: true,
         }),
@@ -16,6 +16,11 @@ export default defineConfig({
     resolve: {
         alias: {
             vue: "vue/dist/vue.esm-bundler.js",
+        },
+    },
+    server: {
+        static: {
+            directory: "/public",
         },
     },
 });

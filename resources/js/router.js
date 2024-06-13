@@ -1,68 +1,79 @@
 import { createRouter, createWebHistory } from "vue-router";
-import AccountOrders from "./components/AccountComponents/AccountOrders.vue";
-import AccountProfile from "./components/AccountComponents/AccountProfile.vue";
-import NotFound from "./components/NotFound.vue";
-import AccountView from "./Views/AccountView.vue";
-import ContactsView from "./Views/ContactsView.vue";
-import GalleryView from "./Views/GalleryView.vue";
-import MainView from "./Views/MainView.vue";
-import MenuView from "./Views/MenuView.vue";
-import NewsView from "./Views/NewsView.vue";
-import RegistrationView from "./Views/RegistrationView.vue";
 
 const routes = [
     {
         path: "/",
-        component: MainView,
+        component: () => import("./Views/MainView.vue"),
         name: "main",
     },
     {
         path: "/contacts",
-        component: ContactsView,
+        component: () => import("./Views/ContactsView.vue"),
         name: "contacts",
     },
     {
         path: "/reg",
-        component: RegistrationView,
+        component: () => import("./Views/RegistrationView.vue"),
+
         name: "registration",
     },
     {
         path: "/gallery",
-        component: GalleryView,
+        component: () => import("./Views/GalleryView.vue"),
+
         name: "gallery",
     },
     {
         path: "/news",
-        component: NewsView,
+        component: () => import("./Views/NewsView.vue"),
+
         name: "news",
     },
     {
         path: "/menu",
-        component: MenuView,
+        component: () => import("./Views/MenuView.vue"),
+
         name: "menu",
     },
     {
+        path: "/forgot-password",
+        component: () => import("./Views/ForgotPasswordView.vue"),
+
+        name: "forgot-password",
+    },
+    {
+        path: "/reset-password",
+        component: () => import("./Views/ResetPasswordView.vue"),
+
+        name: "reset-password",
+    },
+    {
         path: "/account",
-        component: AccountView,
+        component: () => import("./Views/AccountView.vue"),
+
         name: "account",
 
         children: [
             {
                 path: "profile",
-                component: AccountProfile,
+                component: () =>
+                    import("./components/AccountComponents/AccountProfile.vue"),
                 name: "profile",
             },
 
             {
                 path: "orders",
-                component: AccountOrders,
+                component: () =>
+                    import("./components/AccountComponents/AccountOrders.vue"),
+
                 name: "orders",
             },
         ],
     },
     {
         path: "/:catchAll(.*)",
-        component: NotFound,
+        component: () => import("./components/NotFound.vue"),
+
         name: "NotFound",
     },
 ];

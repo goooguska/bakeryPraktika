@@ -45,6 +45,13 @@ Route::post('/users',StoreController::class);
 Route::post('/mail', MailController::class);
 
 
+
+Route::get('/forgot-password', function () {
+    return view('auth.forgot-password');
+})->middleware('guest')->name('password.request');
+
+
+
 Route::controller(AuthController::class)->middleware(['api' ])->prefix('auth')
     ->group(function ($router) {
 

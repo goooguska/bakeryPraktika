@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>aaa</title>
+    <title>Пышка</title>
 </head>
 <body>
-    <h2>Привет, я тест!!!</h2>
+    <h2>Вы получили это сообщение потому что подписались на новости от Пышки!</h2>
 </body>
 </html>
