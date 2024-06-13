@@ -36,13 +36,13 @@ const routes = [
         name: "menu",
     },
     {
-        path: "/forgot-password",
+        path: "/api/forgot-password",
         component: () => import("./Views/ForgotPasswordView.vue"),
 
         name: "forgot-password",
     },
     {
-        path: "/reset-password",
+        path: "/api/reset-password/:token",
         component: () => import("./Views/ResetPasswordView.vue"),
 
         name: "reset-password",

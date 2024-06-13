@@ -45,8 +45,14 @@ const forgotPassword = () => {
                 v-model="password"
             />
         </div>
+
+        <div
+            class="g-recaptcha"
+            data-sitekey="6Lc-AfgpAAAAAEWiEsUe8pwaZp7XfWpw4FOeXRZP"
+        ></div>
+
         <RouterLink
-            to="/forgot-password"
+            to="/api/forgot-password"
             class="forgot-password"
             @click="mainStore.toggleShow"
             >Забыли пароль?</RouterLink
@@ -78,9 +84,9 @@ const forgotPassword = () => {
 <style lang="scss" scoped>
 @import "/resources/css/main.scss";
 .forgot-password {
-    margin-top: 5px;
     cursor: pointer;
     text-decoration: underline;
+    @include fontStyle(20px, 400, "Alumni Sans", $dark-brown);
 }
 .popup {
     padding-top: 50px;
@@ -114,6 +120,7 @@ const forgotPassword = () => {
         }
     }
     &__item {
+        margin-bottom: 10px;
         @include fontStyle(50px, 400, "Alumni Sans", $dark-brown);
         &-submit {
             @include buttonStyle;
@@ -134,8 +141,6 @@ const forgotPassword = () => {
                 border-color: $dark-brown;
                 box-shadow: 0 0 5px $dark-brown;
             }
-        }
-        &-text {
         }
     }
     &__btns {

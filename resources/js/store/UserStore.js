@@ -9,6 +9,35 @@ export const useUserStore = defineStore("userStore", () => {
     const accesToken = ref();
     const errorUser = ref();
     const mainStore = useMainStore();
+    const successMessage = ref("");
+    const errorMessage = ref("");
+
+    const sendEmailForResetPassword = async (email) => {
+        try {
+            await axios.post("/api/forgot-password", {
+                email: email,
+            });
+            successMessage.value = "Письмо успешно отправлено!";
+        } catch (error) {
+            errorMessage.value =
+                error.response.data.message || "Что-то пошло не так";
+        }
+    };
+
+    const resetPassword = async (
+        email,
+        password,
+        password_confirmation,
+        route
+    ) => {
+        await axios.post(`/api/reset-password/${route.params.token}`, {
+            email: email.value,
+            password: password.value,
+            password_confirmation: password_confirmation.value,
+            token: route.params.token,
+        });
+        router.push({ name: "main" });
+    };
 
     const getToken = () => {
         accesToken.value = localStorage.getItem("access_token");
@@ -16,9 +45,12 @@ export const useUserStore = defineStore("userStore", () => {
     const sendEmail = async (email) => {
         try {
             await axios.post("/api/mail", { email: email });
-            return true;
+            successMessage.value = " Вы успешно подписались на новости!";
         } catch (error) {
-            console.log(error);
+            errorMessage.value =
+                error.response.data.message ||
+                " Заполните корректно поле email для получения новостей";
+
             return false;
         }
     };
@@ -90,7 +122,6 @@ export const useUserStore = defineStore("userStore", () => {
         } catch (error) {
             console.log(error);
         }
-        // await api.post("api/auth/logout");
     };
 
     return {
@@ -100,6 +131,10 @@ export const useUserStore = defineStore("userStore", () => {
         logoutUser,
         getInfoAboutUser,
         sendEmail,
+        sendEmailForResetPassword,
+        resetPassword,
+        successMessage,
+        errorMessage,
         authUser,
         accesToken,
         errorUser,

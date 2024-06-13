@@ -55,6 +55,13 @@
     border-radius: 30px;
     padding: 15px 0 15px 35px;
     border: 2px solid $dark-brown;
+    &::placeholder {
+        color: rgba(162, 81, 51, 0.5);
+    }
+    &:focus {
+        border-color: $dark-brown;
+        outline: none;
+    }
     @media (max-width: $mobileScreen) {
         padding: 7px 0 7px 15px;
     }

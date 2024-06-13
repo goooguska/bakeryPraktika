@@ -2,16 +2,12 @@
 import { ref } from "vue";
 import { useUserStore } from "../../store/UserStore";
 const userMail = ref("");
-const showPopupFeedbackSend = ref("");
+const userStore = useUserStore();
 
 const sendUserEmail = async () => {
-    const response = await userStore.sendEmail(userMail.value);
-    response
-        ? (showPopupFeedbackSend.value = true)
-        : (showPopupFeedbackSend.value = false);
+    await userStore.sendEmail(userMail.value);
     userMail.value = "";
 };
-const userStore = useUserStore();
 </script>
 
 <template>
@@ -29,20 +25,9 @@ const userStore = useUserStore();
                 @click.prevent="sendUserEmail"
                 type="submit"
             />
-            <div
-                v-show="showPopupFeedbackSend === true"
-                class="feedback__items-popup"
-            >
+            <div class="feedback__items-popup">
                 <p class="feedback__items-popup-text">
-                    Вы успешно подписались на новости!
-                </p>
-            </div>
-            <div
-                v-show="showPopupFeedbackSend === false"
-                class="feedback__items-popup"
-            >
-                <p class="feedback__items-popup-text">
-                    Заполните корректно поле email для получения новостей
+                    {{ userStore.successMessage }}
                 </p>
             </div>
         </div>

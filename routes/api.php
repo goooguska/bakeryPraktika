@@ -11,9 +11,14 @@ use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\RecipeIngredientController;
 use App\Http\Controllers\StoreController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\UserPasswordController;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -41,15 +46,15 @@ Route::prefix('v1')->group(function () {
     Route::apiResource('bakedProducts', BakedProductController::class);
 });
 
+Route::get('/main', function () {
+    return view('welcome'); 
+})->name('main');
+
 Route::post('/users',StoreController::class);
 Route::post('/mail', MailController::class);
 
-
-
-Route::get('/forgot-password', function () {
-    return view('auth.forgot-password');
-})->middleware('guest')->name('password.request');
-
+Route::post('/forgot-password', [UserPasswordController::class, 'forgotPassword'])->name('password.request');
+Route::post('/reset-password/{token}', [UserPasswordController::class, 'resetPassword'])->name('password.reset');
 
 
 Route::controller(AuthController::class)->middleware(['api' ])->prefix('auth')
