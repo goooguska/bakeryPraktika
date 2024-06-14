@@ -46,10 +46,10 @@ const forgotPassword = () => {
             />
         </div>
 
-        <div
+        <!-- <div
             class="g-recaptcha"
             data-sitekey="6Lc-AfgpAAAAAEWiEsUe8pwaZp7XfWpw4FOeXRZP"
-        ></div>
+        ></div> -->
 
         <RouterLink
             to="/api/forgot-password"
