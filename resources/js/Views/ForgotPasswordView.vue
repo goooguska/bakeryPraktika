@@ -1,10 +1,11 @@
 <script setup>
 import { ref } from "vue";
 import { useUserStore } from "../store/UserStore";
-const email = ref("");
 const userStore = useUserStore();
+const email = ref("");
 const sendEmail = () => {
-    userStore.sendEmailForResetPassword(email.value);
+    userStore.sendEmailForResetPassword(email);
+    email.value = "";
 };
 </script>
 

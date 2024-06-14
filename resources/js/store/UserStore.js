@@ -15,7 +15,7 @@ export const useUserStore = defineStore("userStore", () => {
     const sendEmailForResetPassword = async (email) => {
         try {
             await axios.post("/api/forgot-password", {
-                email: email,
+                email: email.value,
             });
             successMessage.value = "Письмо успешно отправлено!";
         } catch (error) {
@@ -24,18 +24,17 @@ export const useUserStore = defineStore("userStore", () => {
         }
     };
 
-    const resetPassword = async (
-        email,
-        password,
-        password_confirmation,
-        route
-    ) => {
-        await axios.post(`/api/reset-password/${route.params.token}`, {
-            email: email.value,
-            password: password.value,
-            password_confirmation: password_confirmation.value,
-            token: route.params.token,
-        });
+    const resetPassword = async (password, password_confirmation, route) => {
+        const res = await axios.post(
+            `/api/reset-password/${route.params.token}`,
+            {
+                email: route.query.email,
+                password: password.value,
+                password_confirmation: password_confirmation.value,
+                token: route.params.token,
+            }
+        );
+        console.log(res);
         router.push({ name: "main" });
     };
 
@@ -73,11 +72,12 @@ export const useUserStore = defineStore("userStore", () => {
         }
     };
 
-    const loginUser = async (login, password) => {
+    const loginUser = async (login, password, recaptcha) => {
         try {
             const response = await axios.post("/api/auth/login", {
                 login: login,
                 password: password,
+                recaptcha: recaptcha,
             });
             localStorage.setItem("access_token", response.data.access_token);
             login = "";

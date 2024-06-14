@@ -2,28 +2,18 @@
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 import { useUserStore } from "../store/UserStore";
-const email = ref("");
 const password = ref("");
 const password_confirmation = ref("");
 const route = useRoute();
 const userStore = useUserStore();
 
 const resetUserPassword = () => {
-    userStore.resetPassword(email, password, password_confirmation, route);
+    userStore.resetPassword(password, password_confirmation, route);
 };
 </script>
 
 <template>
     <div class="form__reset">
-        <p class="form__reset-text">
-            Заполните email для отправки письма о сбросе пароля
-        </p>
-        <input
-            class="form__reset-input"
-            type="email"
-            placeholder="Введите вашу почту"
-            v-model="email"
-        />
         <input
             class="form__reset-input"
             type="text"

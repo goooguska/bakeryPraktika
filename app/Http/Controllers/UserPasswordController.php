@@ -31,8 +31,7 @@ class UserPasswordController extends Controller
     public function resetPassword(Request $request)
     {
         $request->validate([
-            'token' => 'required',
-        'email' => 'required|email',
+        'token' => 'required',
         'password' => [
             'max:150',
             'min:6',

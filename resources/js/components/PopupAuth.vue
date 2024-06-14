@@ -1,18 +1,37 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useMainStore } from "../store/MainStore";
 import { useUserStore } from "../store/UserStore";
 const mainStore = useMainStore();
 const userStore = useUserStore();
 const login = ref("");
 const password = ref("");
-const signIn = () => {
-    userStore.loginUser(login.value, password.value);
+const recaptchaContainer = ref(null);
+const recaptchaKey = ref(import.meta.env.VITE_GOOGLE_RECAPTCHA_KEY || "");
+const recaptchaToken = ref("");
+
+onMounted(() => {
+    if (recaptchaKey && recaptchaContainer.value) {
+        grecaptcha.ready(() => {
+            grecaptcha.render(recaptchaContainer.value, {
+                sitekey: recaptchaKey.value,
+                callback: (token) => {
+                    recaptchaToken.value = token;
+                },
+            });
+        });
+    }
+});
+
+const signIn = async () => {
+    await userStore.loginUser(
+        login.value,
+        password.value,
+        recaptchaToken.value
+    );
+    await grecaptcha.reset();
     login.value = "";
     password.value = "";
-};
-const forgotPassword = () => {
-    console.log(1);
 };
 </script>
 <template>
@@ -44,11 +63,7 @@ const forgotPassword = () => {
                 v-model="password"
             />
         </div>
-
-        <!-- <div
-            class="g-recaptcha"
-            data-sitekey="6Lc-AfgpAAAAAEWiEsUe8pwaZp7XfWpw4FOeXRZP"
-        ></div> -->
+        <div ref="recaptchaContainer" class="g-recaptcha captcha"></div>
 
         <RouterLink
             to="/api/forgot-password"
@@ -82,6 +97,11 @@ const forgotPassword = () => {
 
 <style lang="scss" scoped>
 @import "/resources/css/main.scss";
+.captcha {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
 .forgot-password {
     cursor: pointer;
     text-decoration: underline;

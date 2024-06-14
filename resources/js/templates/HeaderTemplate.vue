@@ -3,8 +3,6 @@ import BurgerMenu from "../components/BurgerMenu.vue";
 import HeaderAuth from "../components/HeaderAuth.vue";
 import { useMainStore } from "../store/MainStore";
 const mainStore = useMainStore();
-const recaptchaKey = window.recaptchaKey;
-console.log(recaptchaKey);
 </script>
 
 <template>
@@ -16,8 +14,6 @@ console.log(recaptchaKey);
                 alt="logo"
             />
         </div>
-
-        <div class="g-recaptcha" :data-sitekey="recaptchaKey"></div>
         <nav :class="{ navBar: mainStore.isOpen }" class="header__nav">
             <ul class="header__nav-list">
                 <RouterLink
