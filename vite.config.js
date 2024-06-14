@@ -5,22 +5,13 @@ export default defineConfig({
     plugins: [
         vue(),
         laravel({
-            input: [
-                "resources/css/main.scss",
-                "resources/js/app.js",
-                // "/public/assets",
-            ],
+            input: ["resources/js/app.js"],
             refresh: true,
         }),
     ],
     resolve: {
         alias: {
             vue: "vue/dist/vue.esm-bundler.js",
-        },
-    },
-    server: {
-        static: {
-            directory: "/public",
         },
     },
 });

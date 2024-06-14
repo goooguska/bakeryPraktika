@@ -5,6 +5,10 @@ use Illuminate\Support\ServiceProvider;
 
 return [
 
+ 
+        'reCaptchaKey' => env('GOOGLE_RECAPTCHA_KEY'),
+        'reCaptchaKeySecret' => env('GOOGLE_RECAPTCHA_SECRET'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

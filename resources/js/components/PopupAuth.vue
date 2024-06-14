@@ -3,7 +3,6 @@ import { ref } from "vue";
 import { useMainStore } from "../store/MainStore";
 import { useUserStore } from "../store/UserStore";
 const mainStore = useMainStore();
-
 const userStore = useUserStore();
 const login = ref("");
 const password = ref("");
