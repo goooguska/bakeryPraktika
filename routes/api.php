@@ -51,6 +51,8 @@ Route::get('/main', function () {
     return view('welcome'); 
 })->name('main');
 
+
+
 Route::post('/users',StoreController::class);
 Route::post('/mail', MailController::class);
 

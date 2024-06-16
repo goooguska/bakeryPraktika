@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\MoonShine\Resources\NewsResource;
+use App\MoonShine\Resources\RoleResource;
+use App\MoonShine\Resources\UserResource;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\MoonShine;
 use MoonShine\Menu\MenuGroup;
@@ -60,8 +62,15 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
     {
  
         app(MoonShine::class)->menu([
-            MenuItem::make('Администраторы', new MoonShineUserResource()),
+            // MenuItem::make('Администраторы', new MoonShineUserResource()),
+            MenuItem::make('Пользователи', new MoonShineUserResource()),
+
+
+
+            MenuItem::make('Пользователи', new UserResource()),
             MenuItem::make('Новости', new NewsResource()),
+            MenuItem::make('Роли', new RoleResource()),
+
 
         ]);
        

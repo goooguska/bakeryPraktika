@@ -5,24 +5,23 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\News;
-use MoonShine\Fields\Image; 
+use App\Models\Role;
+
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Field;
 use MoonShine\Components\MoonShineComponent;
-use MoonShine\Fields\Date;
 use MoonShine\Fields\Text;
 
 /**
- * @extends ModelResource<News>
+ * @extends ModelResource<Role>
  */
-class NewsResource extends ModelResource
+class RoleResource extends ModelResource
 {
-    protected string $model = News::class;
+    protected string $model = Role::class;
 
-    protected string $title = 'News';
+    protected string $title = 'Roles';
 
     /**
      * @return list<MoonShineComponent|Field>
@@ -32,33 +31,31 @@ class NewsResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
-                Text::make(__('Название'), 'name')
+                Text::make(__('moonshine::ui.resource.name'), 'name')
                 ->required()
                 ->readonly() 
                 ->showOnExport(),
-                Date::make(__('Дата публикации'), 'date_news')
-                ->format("d.m.Y")
-                ->default(now()->toDateTimeString())
-                ->sortable()
-                ->hideOnForm()
-                ->showOnExport(),
-                Text::make(__('Описание'), 'info')
-                ->required()
-                ->readonly() 
-                ->showOnExport(),
-                Image::make(__('Изображение'), 'image') 
             ]),
         ];
     }
 
     /**
-     * @param News $item
+     * @param Role $item
      *
      * @return array<string, string[]|string>
      * @see https://laravel.com/docs/validation#available-validation-rules
      */
     public function rules(Model $item): array
     {
-        return [];
+        return [
+            'name' => 'required',
+        ];
+    }
+    public function search(): array
+    {
+        return [
+            'id',
+            'name',
+        ];
     }
 }

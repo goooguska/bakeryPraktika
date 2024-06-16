@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use MoonShine\Exceptions\MoonShineNotFoundException;
 use MoonShine\Forms\LoginForm;
 use MoonShine\Http\Middleware\Authenticate;
@@ -67,7 +68,7 @@ return [
     ],
 
     'auth' => [
-        'enable' => true,
+        'enable' => false,
         'middleware' => Authenticate::class,
         'fields' => [
             'username' => 'email',
@@ -85,7 +86,7 @@ return [
         'providers' => [
             'moonshine' => [
                 'driver' => 'eloquent',
-                'model' => MoonshineUser::class,
+                'model' => User::class,
             ],
         ],
         'pipelines' => [],

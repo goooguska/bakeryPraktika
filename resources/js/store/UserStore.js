@@ -98,14 +98,6 @@ export const useUserStore = defineStore("userStore", () => {
         email,
         phoneNumber
     ) => {
-        console.log(
-            login,
-            firstName,
-            password,
-            password_confirmation,
-            email,
-            phoneNumber
-        );
         try {
             const response = await axios.post("api/users", {
                 firstName: firstName,
