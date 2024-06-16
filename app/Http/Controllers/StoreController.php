@@ -11,7 +11,7 @@ class StoreController extends Controller
    public function __invoke(StoreRequest $request)
    {
     $data = $request->validated();
-    $data = array_merge(['role' => 'customer'], $data);
+    $data = array_merge(['role_id' => '1'], $data);
     $data['password'] = Hash::make($data['password']);
 
     $userWithLogin = User::where('login', $data['login'])->first();

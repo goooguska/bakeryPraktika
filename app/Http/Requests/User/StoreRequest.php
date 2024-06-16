@@ -62,6 +62,9 @@ class StoreRequest extends FormRequest
                 'required',
                 'string',
             ],
+            'role_id' => [
+                'exists:roles,id',
+            ],
         ];
        
     }
