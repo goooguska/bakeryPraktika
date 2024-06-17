@@ -2,12 +2,13 @@
 import { onMounted } from "vue";
 import { useMainStore } from "../store/MainStore";
 import { useUserStore } from "../store/UserStore";
+import CartProducts from "./CartProducts.vue";
 import PopupAuth from "./PopupAuth.vue";
+
 const userStore = useUserStore();
 const mainStore = useMainStore();
 const toggleValues = () => {
     mainStore.toggleShow();
-    // mainStore.toggleBurgerMenu();
 };
 onMounted(() => {
     userStore.getToken();
@@ -16,9 +17,15 @@ onMounted(() => {
 
 <template>
     <div v-if="userStore.accesToken" class="auth">
-        <div class="auth__cart">
+        <div
+            class="auth__cart"
+            @click="mainStore.popupCart = !mainStore.popupCart"
+        >
             <img src="/assets/icons/cart.svg" alt="cart" />
             <p class="auth__cart-text">КОРЗИНА</p>
+        </div>
+        <div v-show="mainStore.popupCart" class="card">
+            <CartProducts />
         </div>
         <div class="auth__account">
             <img src="/assets/icons/account.svg" alt="account" />

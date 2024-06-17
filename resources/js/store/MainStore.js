@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 export const useMainStore = defineStore("mainStore", () => {
     const isOpen = ref(true);
+    const popupCart = ref(false);
 
     const showAuth = ref(false);
     const toggleShow = () => {
@@ -59,6 +60,7 @@ export const useMainStore = defineStore("mainStore", () => {
         slides,
         showAuth,
         isOpen,
+        popupCart,
         toggleShow,
         toggleBurgerMenu,
     };

@@ -1,6 +1,8 @@
 <script setup>
-import ButtonComponent from "./UI/ButtonComponent.vue";
-
+import { useCartStore } from "../store/CartStore";
+import { useMainStore } from "../store/MainStore";
+const cartStore = useCartStore();
+const mainStore = useMainStore();
 defineProps({
     product: {
         type: Object,
@@ -26,11 +28,10 @@ defineProps({
             <div class="popup__content-info">
                 <div class="popup__content-text">
                     <p class="popup__content-text-title">
-                        Круассан крем чиз с карамелью
+                        {{ product.attributes.name }}
                     </p>
                     <p class="popup__content-text-subtitle">
-                        Воздушный круассан с творожным сыром и карамельным
-                        кремом, покрыт белым шоколадом
+                        {{ product.attributes.info }}
                     </p>
                 </div>
                 <div class="popup__content-calories">
@@ -80,7 +81,7 @@ defineProps({
                         </li>
                     </ul>
                     <p class="popup__content-calories-weight">
-                        Вес блюда: 90 г
+                        Вес блюда: {{ product.attributes.weight }} г
                     </p>
                 </div>
             </div>
@@ -93,7 +94,12 @@ defineProps({
                     цельное сухое молоко, натуральный экстракт ванили),
                 </p>
             </div>
-            <ButtonComponent>Заказать </ButtonComponent>
+            <button
+                class="popup__btn"
+                @click="cartStore.addToCart(product.attributes)"
+            >
+                Заказать
+            </button>
         </div>
     </div>
 </template>
@@ -225,6 +231,9 @@ defineProps({
                 );
             }
         }
+    }
+    &__btn {
+        @include buttonStyle;
     }
 }
 </style>
