@@ -3,31 +3,31 @@
 declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
-use MoonShine\Fields\Text; 
+
 use Illuminate\Database\Eloquent\Model;
-use App\Models\News;
-use MoonShine\Fields\Date; 
+use App\Models\Product;
+
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
-use MoonShine\Fields\Image; 
 use MoonShine\Fields\Field;
 use MoonShine\Components\MoonShineComponent;
+use MoonShine\Fields\Number;
+use MoonShine\Fields\Text;
+use MoonShine\Fields\Image; 
 
 /**
- * @extends ModelResource<News>
+ * @extends ModelResource<Product>
  */
-class NewsResource extends ModelResource
+class ProductResource extends ModelResource
 {
-    protected string $model = News::class;
+    protected string $model = Product::class;
 
-    protected string $title = 'News';
+    protected string $title = 'Products';
 
     protected string $sortDirection = 'ASC';
 
     protected int $itemsPerPage = 10;
-
-
     /**
      * @return list<MoonShineComponent|Field>
      */
@@ -39,31 +39,34 @@ class NewsResource extends ModelResource
                 Text::make(__('Название'), 'name')
                 ->required()
                 ->showOnExport(),
-                Date::make(__('Дата публикации'), 'date_news')
-                ->format('d.m.Y') 
-                ->required()
-                ->showOnExport(),
                 Text::make(__('Описание'), 'info')
                 ->required()
                 ->showOnExport(),
-                // Image::make('Превью','image') 
+                Number::make(__('Цена'), 'cost') 
+                ->required()
+                ->showOnExport(),
+                Number::make(__('Количество в шт'), 'quantity') 
+                ->required()
+                ->showOnExport(),
+                Number::make(__('Вес в гр.'), 'weight') 
+                ->required()
+                ->showOnExport(),
+                Text::make(__('Тип'), 'type')
+                ->required()
+                ->showOnExport(),
+                // Image::make('Изображение','image') 
             ]),
         ];
     }
 
     /**
-     * @param News $item
+     * @param Product $item
      *
      * @return array<string, string[]|string>
      * @see https://laravel.com/docs/validation#available-validation-rules
      */
     public function rules(Model $item): array
     {
-        return [
-            'name' => 'required',
-            'date_news' => 'required',
-
-        ];
+        return [];
     }
- 
 }

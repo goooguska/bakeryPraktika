@@ -13,14 +13,16 @@ class BakedProduct extends Model
         'productRecipe_id',
         'date_baking',
         'date_sale',
+        'quantity'
     ];
     use HasFactory;
     public function baker(): BelongsTo
     {
         return $this->belongsTo(Baker::class);
     }
-    public function productRecipe(): BelongsTo
+    public function product(): BelongsTo
     {
-        return $this->belongsTo(ProductRecipe::class);
+        return $this->belongsTo(Product::class);
     }
+
 }

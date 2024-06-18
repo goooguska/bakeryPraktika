@@ -8,14 +8,15 @@ use App\Models\Role;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use MoonShine\Fields\Relationships\BelongsTo;
-
+use MoonShine\Fields\Phone; 
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Field;
 use MoonShine\Components\MoonShineComponent;
 use MoonShine\Fields\Text; 
-
+use MoonShine\Fields\Email; 
+use MoonShine\Fields\Password;
 /**
  * @extends ModelResource<User>
  */
@@ -27,6 +28,7 @@ class UserResource extends ModelResource
 
     protected string $sortDirection = 'ASC';
 
+    protected int $itemsPerPage = 10;
 
     /**
      * @return list<MoonShineComponent|Field>
@@ -39,19 +41,26 @@ class UserResource extends ModelResource
                 Text::make(__('Имя'), 'firstName')
                 ->required()
                 ->showOnExport(),
+
+                
                 BelongsTo::make(
                     __('Роль'),
                     'role',
                     static fn (Role $model) => $model->name,
                     new RoleResource(),
-                )->badge('green'),
-                Text::make(__('Номер телефона'), 'phoneNumber')
+                )->badge('success'),
+
+
+                Phone::make(__('Номер телефона'), 'phoneNumber')
                 ->required()
                 ->showOnExport(),
                 Text::make(__('Логин'), 'login')
                 ->required()
                 ->showOnExport(),
-                Text::make(__('Email'), 'email')
+                Email::make(__('Email'), 'email')
+                ->required()
+                ->showOnExport(),
+                Password::make(__('Пароль'), 'password')
                 ->required()
                 ->showOnExport(),
             ]),

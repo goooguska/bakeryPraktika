@@ -34,6 +34,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->belongsTo(Role::class);
     }
+ 
     /**
      * The attributes that should be hidden for serialization.
      *

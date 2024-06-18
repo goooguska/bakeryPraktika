@@ -3,30 +3,31 @@
 declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
-use MoonShine\Fields\Text; 
+
 use Illuminate\Database\Eloquent\Model;
-use App\Models\News;
-use MoonShine\Fields\Date; 
+use App\Models\Ingredient;
+use App\Models\Provider;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
-use MoonShine\Fields\Image; 
 use MoonShine\Fields\Field;
 use MoonShine\Components\MoonShineComponent;
+use MoonShine\Fields\Text; 
+use MoonShine\Fields\Number;
+use MoonShine\Fields\Relationships\BelongsTo;
 
 /**
- * @extends ModelResource<News>
+ * @extends ModelResource<Ingredient>
  */
-class NewsResource extends ModelResource
+class IngredientResource extends ModelResource
 {
-    protected string $model = News::class;
+    protected string $model = Ingredient::class;
 
-    protected string $title = 'News';
+    protected string $title = 'Ingredients';
 
     protected string $sortDirection = 'ASC';
 
     protected int $itemsPerPage = 10;
-
 
     /**
      * @return list<MoonShineComponent|Field>
@@ -39,31 +40,27 @@ class NewsResource extends ModelResource
                 Text::make(__('Название'), 'name')
                 ->required()
                 ->showOnExport(),
-                Date::make(__('Дата публикации'), 'date_news')
-                ->format('d.m.Y') 
+                Number::make(__('Количество в кг'), 'quantity') 
                 ->required()
                 ->showOnExport(),
-                Text::make(__('Описание'), 'info')
-                ->required()
-                ->showOnExport(),
-                // Image::make('Превью','image') 
+                BelongsTo::make(
+                    __('Поставщик'),
+                    'provider',
+                    static fn (Provider $model) => $model->name,
+                    new ProviderResource(),
+                )->badge('info'),
             ]),
         ];
     }
 
     /**
-     * @param News $item
+     * @param Ingredient $item
      *
      * @return array<string, string[]|string>
      * @see https://laravel.com/docs/validation#available-validation-rules
      */
     public function rules(Model $item): array
     {
-        return [
-            'name' => 'required',
-            'date_news' => 'required',
-
-        ];
+        return [];
     }
- 
 }

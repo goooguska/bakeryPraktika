@@ -20,7 +20,7 @@ class ProviderFactory extends Factory
             'name' => $this->faker->unique()->company(),
             'cost' => $this->faker->randomNumber(3, true),
             'quantity' => $this->faker->randomNumber(2, true),
-            'date_of_delivery' => $this->faker->date(),
+            'date_of_delivery' => $this->faker->dateTimeBetween('-1 week', '+1 week'),
         ];
     }
 }

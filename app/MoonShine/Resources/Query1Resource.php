@@ -5,26 +5,23 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use Illuminate\Database\Eloquent\Model;
-use MoonShine\Fields\Text; 
-use App\Models\Role;
+use App\Models\Query1;
 
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Field;
 use MoonShine\Components\MoonShineComponent;
+use MoonShine\Fields\Text;
 
 /**
- * @extends ModelResource<Role>
+ * @extends ModelResource<Query1>
  */
-class RoleResource extends ModelResource
+class Query1Resource extends ModelResource
 {
-    protected string $model = Role::class;
+    protected string $model = Query1::class;
 
-    protected string $title = 'Roles';
-
-    protected string $sortDirection = 'ASC';
-
+    protected string $title = 'Запрос 1';
 
     /**
      * @return list<MoonShineComponent|Field>
@@ -34,15 +31,15 @@ class RoleResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
-                Text::make(__('Роль'), 'name')
-                ->required()
-                ->showOnExport(),
+                Text::make(__('Поставщик'), 'name')
+                    ->required()
+                    ->showOnExport(),
             ]),
         ];
     }
 
     /**
-     * @param Role $item
+     * @param Query1 $item
      *
      * @return array<string, string[]|string>
      * @see https://laravel.com/docs/validation#available-validation-rules

@@ -2,15 +2,15 @@
 
 namespace Database\Factories;
 
-use App\Models\Baker;
+use App\Models\BakedProduct;
 use App\Models\Product;
-use App\Models\ProductRecipe;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BakedProduct>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Sale>
  */
-class BakedProductFactory extends Factory
+class SaleFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,13 +20,13 @@ class BakedProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'baker_id' => function(){
-                return Baker::inRandomOrder()->first()->id;
-            },
             'product_id' => function(){
+                
                 return Product::inRandomOrder()->first()->id;
-            },
-            'date_baking' => $this->faker->dateTimeBetween('-1 week', '+1 week'),
+                },
+                'user_id' => function(){
+                return User::inRandomOrder()->first()->id;
+                },
             'date_sale' => $this->faker->dateTimeBetween('-1 week', '+1 week'),
             'quantity' => $this->faker->randomNumber(2, false),
 

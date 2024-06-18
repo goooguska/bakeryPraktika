@@ -17,11 +17,35 @@ class IngredientFactory extends Factory
      */
     public function definition(): array
     {
+        $ingredients = [
+            "пшеничная мука",
+            "вода",
+            "сахар",
+            "соль",
+            "дрожжи",
+            "масло растительное",
+            "молоко",
+            "яйца",
+            "сливочное масло",
+            "мед",
+            "мак",
+            "кунжут",
+            "семена льна",
+            "ванильный сахар",
+            "разрыхлитель",
+            "кефир",
+            "тмин",
+            "изюм",
+            "сухое молоко",
+            "овсяные хлопья"
+        ];
+        
         return [
             'provider_id' => function(){
                 return Provider::inRandomOrder()->first()->id;
             },
-            'name' => $this->faker->unique()->words(1,true),
+            
+            'name' => $this->faker->randomElement($ingredients),
             'quantity' => $this->faker->randomNumber(2, false),
         ];
     }

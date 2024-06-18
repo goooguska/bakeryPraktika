@@ -18,6 +18,10 @@ class ProductRecipe extends Model
     {
         return $this->belongsTo(Product::class);
     }
+    public function recipe(): BelongsTo
+    {
+        return $this->belongsTo(Recipe::class);
+    }
 
     public function recipeIngredient(): BelongsTo
     {

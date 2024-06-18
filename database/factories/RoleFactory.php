@@ -19,8 +19,6 @@ class RoleFactory extends Factory
         $roles = [
             'admin',
             'customer',
-
-        
         ];
       
         return [

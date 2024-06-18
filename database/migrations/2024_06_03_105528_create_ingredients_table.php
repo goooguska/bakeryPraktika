@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 55)
-            ->unique();
+            $table->string('name', 55);
 
         $table->integer('quantity')
             ->default(0);

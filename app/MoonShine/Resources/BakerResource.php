@@ -3,29 +3,31 @@
 declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
-use MoonShine\Fields\Text; 
+
 use Illuminate\Database\Eloquent\Model;
-use App\Models\News;
-use MoonShine\Fields\Date; 
+use App\Models\Baker;
+
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
-use MoonShine\Fields\Image; 
 use MoonShine\Fields\Field;
+use MoonShine\Fields\Text; 
+use MoonShine\Fields\Date; 
 use MoonShine\Components\MoonShineComponent;
 
 /**
- * @extends ModelResource<News>
+ * @extends ModelResource<Baker>
  */
-class NewsResource extends ModelResource
+class BakerResource extends ModelResource
 {
-    protected string $model = News::class;
+    protected string $model = Baker::class;
 
-    protected string $title = 'News';
+    protected string $title = 'Bakers';
 
     protected string $sortDirection = 'ASC';
 
     protected int $itemsPerPage = 10;
+
 
 
     /**
@@ -36,34 +38,25 @@ class NewsResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
-                Text::make(__('Название'), 'name')
+                Text::make(__('Полное имя'), 'name')
                 ->required()
                 ->showOnExport(),
-                Date::make(__('Дата публикации'), 'date_news')
-                ->format('d.m.Y') 
+                Date::make(__('Смена'), 'shift_at_work')
                 ->required()
-                ->showOnExport(),
-                Text::make(__('Описание'), 'info')
-                ->required()
-                ->showOnExport(),
-                // Image::make('Превью','image') 
+                ->showOnExport()
+                ->withTime(),
             ]),
         ];
     }
 
     /**
-     * @param News $item
+     * @param Baker $item
      *
      * @return array<string, string[]|string>
      * @see https://laravel.com/docs/validation#available-validation-rules
      */
     public function rules(Model $item): array
     {
-        return [
-            'name' => 'required',
-            'date_news' => 'required',
-
-        ];
+        return [];
     }
- 
 }

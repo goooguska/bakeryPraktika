@@ -30,7 +30,7 @@ return [
 
     'use_migrations' => true,
     'use_notifications' => true,
-    'use_theme_switcher' => true,
+    'use_theme_switcher' => false,
 
     'layout' => MoonShineLayout::class,
 
@@ -94,7 +94,6 @@ return [
     ],
     'locales' => [
         'ru',
-        'en',
         
     ],
 

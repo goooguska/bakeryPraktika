@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BakedProductResource extends JsonResource
+class SaleResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,29 +15,29 @@ class BakedProductResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'type' => 'bakedProducts',
-            'id' => $this->id,
-
-            'attributes' => [
-                'date_baking' => $this->date_baking,
+            'type' => 'sales',
+            'id' => (string) $this->id,
+           'attributes' =>[
                 'date_sale' => $this->date_sale,
                 'quantity' => $this->quantity,
-
-            ],
+           ],
             'relationships' => [
-                'baker' => [
-                    'links' => [
-                        'related' =>route('bakers.show', ['baker' => $this->baker_id])
-                    ],
-                ],
                 'product' => [
                     'links' => [
-                        'related' =>route('products.show', ['product' => $this->product_id])
+                        'related' => route('products.show', ['product' => $this->product_id])
                     ],
                 ],
+              
+                'user' => [
+                    'links' => [
+                        'related' => route('users.show', ['user' => $this->user_id])
+                    ],
+                ],
+           
             ],
+
             'links' => [
-                'self' => route('bakedProducts.show', ['bakedProduct' => $this->id])
+                'self' => route('sales.show', ['sale' => $this->id]),
             ],
         ];
       

@@ -26,14 +26,19 @@ class UpdateBakedProductRequest extends FormRequest
             'baker_id' => [
                 'exists:bakers,id',
             ],
-            'productRecipe_id' => [
-                'exists:productRecipes,id',
+            'product_id' => [
+                'exists:products,id',
             ],
             'date_baking' => [
                 'date',
             ],
             'date_sale' => [
                 'date',
+            ],
+            'quantity' => [
+                'integer',
+                'max:2147483647',
+                'min:0',
             ],
         ];
     }

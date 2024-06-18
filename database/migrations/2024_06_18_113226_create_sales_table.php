@@ -11,20 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('baked_products', function (Blueprint $table) {
+        Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->date("date_baking");
-            $table->date("date_sale");
-            $table->integer('quantity')
-            ->default(0);
-            $table->bigInteger('baker_id') 
-            ->unsigned();
-            $table->foreign('baker_id')   
-            ->references('id')       
-            ->on('bakers')          
-            ->onDelete('CASCADE')      
-            ->onUpdate('RESTRICT');
-
             $table->bigInteger('product_id') 
             ->unsigned();
             $table->foreign('product_id')   
@@ -32,6 +20,19 @@ return new class extends Migration
             ->on('products')          
             ->onDelete('CASCADE')      
             ->onUpdate('RESTRICT');
+
+            $table->bigInteger('user_id') 
+            ->unsigned();
+            $table->foreign('user_id')   
+            ->references('id')       
+            ->on('users')          
+            ->onDelete('CASCADE')      
+            ->onUpdate('RESTRICT');
+
+            $table->date("date_sale");
+            $table->integer('quantity')
+            ->default(0);
+
             $table->timestamps();
         });
     }
@@ -41,6 +42,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('baked_products');
+        Schema::dropIfExists('sales');
     }
 };

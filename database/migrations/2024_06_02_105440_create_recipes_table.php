@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 55)
             ->unique();
             $table->text('info');
-            $table->dateTime("baking_time");
+            $table->time("baking_time");
             $table->timestamps();
         });
     }

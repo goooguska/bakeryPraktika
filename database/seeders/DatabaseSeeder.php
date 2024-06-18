@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(0)->create();
 
         $this->call([
             RoleSeeder::class,
@@ -26,15 +25,13 @@ class DatabaseSeeder extends Seeder
             RecipeIngredientSeeder::class,
             ProductSeeder::class,
             ProductRecipeSeeder::class,
+            UserSeeder::class,
             BakerSeeder::class,
             BakedProductSeeder::class,
-
-
-
-
-
+            SaleSeeder::class,
 
         ]);
+
 
     }
 }
