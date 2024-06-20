@@ -3,13 +3,18 @@
 declare(strict_types=1);
 
 namespace App\MoonShine\Pages;
+
+use App\Models\Baker;
 use MoonShine\Components\FormBuilder;
+use MoonShine\Fields\Date;
+use MoonShine\Fields\Number;
 use MoonShine\Fields\Text;
 use MoonShine\Decorations\Block;
 use MoonShine\Pages\Page;
 use MoonShine\Components\MoonShineComponent;
+use MoonShine\Fields\Select;
 
-class Query3 extends Page
+class Query6 extends Page
 {
     /**
      * @return array<string, string>
@@ -23,7 +28,7 @@ class Query3 extends Page
 
     public function title(): string
     {
-        return $this->title ?: 'Query3';
+        return $this->title ?: 'Query6';
     }
 
     /**
@@ -31,16 +36,28 @@ class Query3 extends Page
      */
     public function components(): array
 	{
+
+        $name = Select::make('Ингредиент', 'name');
+        $action = '/admin/page/query6?' . http_build_query([
+            'name' => $name,
+        ]);
 		return [
             Text::make()
             ->readonly()
-            ->placeholder('Получить сведения об ингредиентах: какими поставщиками поставляется, их расценки, время поставки.'),
+            ->placeholder('Получить список изделий, выпеченных определенным пекарем за последнюю неделю.'),
             Block::make([
                 FormBuilder::make()
-                ->action('/admin/page/query3')
+                ->action($action)
                 ->method('POST')
+                ->fields(  [
+                    Select::make('Пекарь', 'name')
+                    ->options(
+                        Baker::pluck('name', 'id')
+                            ->all()
+                    )->nullable()->searchable(),
+                ])
                 ->submit(label: 'Сделать запрос', attributes: ['class' => 'btn-success']) 
-                
+
             ])
         ];
 	}

@@ -22,7 +22,18 @@ Route::get('/{vue_capture?}', function () {
 
 
 Route::post('/admin/page/query1', [QueryController::class, 'query1']);
-// Route::post('/admin/page/query1', [QueryController::class, 'query2']);
+Route::post('/admin/page/query2', [QueryController::class, 'query2']);
+Route::post('/admin/page/query3', [QueryController::class, 'query3']);
+Route::post('/admin/page/query4', [QueryController::class, 'query4']);
+Route::post('/admin/page/query5', [QueryController::class, 'query5']);
+Route::post('/admin/page/query6', [QueryController::class, 'query6']);
+Route::post('/admin/page/query7', [QueryController::class, 'query7']);
+Route::post('/admin/page/query8', [QueryController::class, 'query8']);
+Route::post('/admin/page/query9', [QueryController::class, 'query9']);
+Route::post('/admin/page/query10', [QueryController::class, 'query10']);
+
+
+
 
 
 

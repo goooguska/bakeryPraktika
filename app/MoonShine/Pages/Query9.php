@@ -3,13 +3,15 @@
 declare(strict_types=1);
 
 namespace App\MoonShine\Pages;
+
 use MoonShine\Components\FormBuilder;
-use MoonShine\Fields\Text;
-use MoonShine\Decorations\Block;
 use MoonShine\Pages\Page;
 use MoonShine\Components\MoonShineComponent;
+use MoonShine\Decorations\Block;
+use MoonShine\Fields\Select;
+use MoonShine\Fields\Text;
 
-class Query3 extends Page
+class Query9 extends Page
 {
     /**
      * @return array<string, string>
@@ -23,7 +25,7 @@ class Query3 extends Page
 
     public function title(): string
     {
-        return $this->title ?: 'Query3';
+        return $this->title ?: 'Query9';
     }
 
     /**
@@ -31,13 +33,14 @@ class Query3 extends Page
      */
     public function components(): array
 	{
-		return [
+ 
+        return [
             Text::make()
             ->readonly()
-            ->placeholder('Получить сведения об ингредиентах: какими поставщиками поставляется, их расценки, время поставки.'),
+            ->placeholder('Получить среднее число продаж на месяц по любому виду готовой продукции.'),
             Block::make([
                 FormBuilder::make()
-                ->action('/admin/page/query3')
+                ->action('/admin/page/query9')
                 ->method('POST')
                 ->submit(label: 'Сделать запрос', attributes: ['class' => 'btn-success']) 
                 

@@ -6,8 +6,15 @@ namespace App\Providers;
 
 use App\Models\Sale;
 use App\MoonShine\Pages\Query1;
+use App\MoonShine\Pages\Query10;
 use App\MoonShine\Pages\Query2;
 use App\MoonShine\Pages\Query3;
+use App\MoonShine\Pages\Query4;
+use App\MoonShine\Pages\Query5;
+use App\MoonShine\Pages\Query6;
+use App\MoonShine\Pages\Query7;
+use App\MoonShine\Pages\Query8;
+use App\MoonShine\Pages\Query9;
 use App\MoonShine\Resources\BakedProductResource;
 use App\MoonShine\Resources\BakerResource;
 use App\MoonShine\Resources\IngredientResource;
@@ -50,9 +57,14 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
         return [
             Query1::make('Запрос 1', 'query1'),
             Query2::make('Запрос 2', 'query2'),
-            Query3::make('Запрос 3', 'query3')
-
-
+            Query3::make('Запрос 3', 'query3'),
+            Query4::make('Запрос 4', 'query4'),
+            Query5::make('Запрос 5', 'query5'),
+            Query6::make('Запрос 6', 'query6'),
+            Query7::make('Запрос 7', 'query7'),
+            Query8::make('Запрос 8', 'query8'),
+            Query9::make('Запрос 9', 'query9'),
+            Query10::make('Запрос 10', 'query10'),
         ];
     }
 
@@ -115,8 +127,14 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
             MenuGroup::make('Запросы',[
                 MenuItem::make('Запрос 1', Query1::make('Запрос 1', 'query1')),
                 MenuItem::make('Запрос 2', Query2::make('Запрос 2', 'query2')),
-                MenuItem::make('Запрос 3', Query3::make('Запрос 3', 'query3'))
-
+                MenuItem::make('Запрос 3', Query3::make('Запрос 3', 'query3')),
+                MenuItem::make('Запрос 4', Query4::make('Запрос 4', 'query4')),
+                MenuItem::make('Запрос 5', Query3::make('Запрос 5', 'query5')),
+                MenuItem::make('Запрос 6', Query3::make('Запрос 6', 'query6')),
+                MenuItem::make('Запрос 7', Query3::make('Запрос 7', 'query7')),
+                MenuItem::make('Запрос 8', Query3::make('Запрос 8', 'query8')),
+                MenuItem::make('Запрос 9', Query3::make('Запрос 9', 'query9')),
+                MenuItem::make('Запрос 10', Query3::make('Запрос 10', 'query10')),
             ])
         ];
     }

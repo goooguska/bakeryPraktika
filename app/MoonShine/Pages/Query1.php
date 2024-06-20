@@ -59,9 +59,9 @@ class Query1 extends Page
     public function components(): array
 	{
         $name = Text::make('Название')->value();
-        $start_date =  Number::make('Количество')->value();
-        $end_date = Date::make('начальная дата')->value();
-        $quantity= Date::make('конечная дата')->value();
+        $quantity= Number::make('Количество')->value();
+        $start_date =  Date::make('Начальная дата')->value();
+        $end_date = Date::make('конечная дата')->value();
         $action = '/admin/page/query1?' . http_build_query([
             'name' => $name,
             'quantity' => $quantity,
@@ -70,6 +70,9 @@ class Query1 extends Page
         ]);
  
 		return [
+            Text::make()
+            ->readonly()
+            ->placeholder('Получить список и общее число поставщиков, поставляющих указанный ингредиент, в объеме, не менее заданного за определенный период.'),
             Block::make([
                 FormBuilder::make()
                 ->action($action)
@@ -80,18 +83,8 @@ class Query1 extends Page
                     Date::make('start_date'),
                     Date::make('end_date')
                 ])
-                // ->name('query-form')
-                // ->async(asyncEvents:['table-updated-query-table','form-reset-query-form']),
-         
-                // TableBuilder::make()
-                // ->fields(fn()=>[
-                //     ID::make('userId'),
-                //     Text::make('title')
-                // ])
-                // ->items($this->fetch())
-                // ->name('query-table')
-                // ->async(),
-                 
+                ->submit(label: 'Сделать запрос', attributes: ['class' => 'btn-success']) 
+
             ])
         
           
