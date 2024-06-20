@@ -32,10 +32,6 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'phoneNumber' => fake()->phoneNumber(),
             'login'=> fake()->word(),
-            'role_id' => function(){
-                return Role::inRandomOrder()->first()->id;
-                },
-
 
         ];
     }

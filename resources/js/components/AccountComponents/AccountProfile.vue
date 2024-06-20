@@ -29,12 +29,6 @@ onMounted(async () => {
             </p>
         </div>
         <div class="profile__btns">
-            <RouterLink
-                class="profile__btns-admin"
-                v-if="userInfo.role_id === 2"
-                to="/admin/login"
-                >Панель Администратора
-            </RouterLink>
             <button
                 @click.prevent="userStore.logoutUser"
                 class="profile__btns-link"

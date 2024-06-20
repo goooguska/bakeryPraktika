@@ -41,16 +41,6 @@ class UserResource extends ModelResource
                 Text::make(__('Имя'), 'firstName')
                 ->required()
                 ->showOnExport(),
-
-                
-                BelongsTo::make(
-                    __('Роль'),
-                    'role',
-                    static fn (Role $model) => $model->name,
-                    new RoleResource(),
-                )->badge('success'),
-
-
                 Phone::make(__('Номер телефона'), 'phoneNumber')
                 ->required()
                 ->showOnExport(),

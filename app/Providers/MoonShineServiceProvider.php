@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use App\Models\Sale;
 use App\MoonShine\Pages\Query1;
 use App\MoonShine\Pages\Query10;
 use App\MoonShine\Pages\Query2;
@@ -22,18 +21,13 @@ use App\MoonShine\Resources\NewsResource;
 use App\MoonShine\Resources\ProductRecipeResource;
 use App\MoonShine\Resources\ProductResource;
 use App\MoonShine\Resources\ProviderResource;
-use App\MoonShine\Resources\Query1Resource;
 use App\MoonShine\Resources\RecipeIngredientResource;
 use App\MoonShine\Resources\RecipeResource;
-use App\MoonShine\Resources\RoleResource;
 use App\MoonShine\Resources\SaleResource;
 use App\MoonShine\Resources\UserResource;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
-use MoonShine\MoonShine;
 use MoonShine\Menu\MenuGroup;
 use MoonShine\Menu\MenuItem;
-use MoonShine\Resources\MoonShineUserResource;
-use MoonShine\Resources\MoonShineUserRoleResource;
 use MoonShine\Contracts\Resources\ResourceContract;
 use MoonShine\Menu\MenuElement;
 use MoonShine\Pages\Page;
@@ -82,10 +76,6 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 MenuItem::make(
                     static fn() => __('Пользователи'),
                     new UserResource()
-                ),
-                MenuItem::make(
-                    static fn() => __('Роли'),
-                    new RoleResource()
                 ),
                 MenuItem::make(
                     static fn() => __('Пекари'),

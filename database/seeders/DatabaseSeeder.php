@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-            RoleSeeder::class,
             ProviderSeeder::class,
             NewsSeeder::class,
             RecipeSeeder::class,

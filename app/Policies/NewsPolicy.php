@@ -37,7 +37,7 @@ class NewsPolicy
      */
     public function update(User $user, News $news): bool
     {
-        //
+
     }
 
     /**

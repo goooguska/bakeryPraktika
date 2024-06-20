@@ -28,6 +28,7 @@ class NewsResource extends ModelResource
     protected int $itemsPerPage = 10;
 
 
+
     /**
      * @return list<MoonShineComponent|Field>
      */

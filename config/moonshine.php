@@ -72,7 +72,7 @@ return [
         'enable' => true,
         'middleware' => Authenticate::class,
         'fields' => [
-            'username' => 'login',
+            'username' => 'email',
             'password' => 'password',
             'name' => 'name',
             'avatar' => '',
@@ -87,7 +87,7 @@ return [
         'providers' => [
             'moonshine' => [
                 'driver' => 'eloquent',
-                'model' => User::class,
+                'model' => MoonshineUser::class,
             ],
         ],
         'pipelines' => [],

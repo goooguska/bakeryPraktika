@@ -7,6 +7,7 @@ namespace App\MoonShine\Pages;
 use MoonShine\ActionButtons\ActionButton;
 use MoonShine\Pages\Page;
 use MoonShine\Components\MoonShineComponent;
+use MoonShine\Fields\Text;
 
 class Dashboard extends Page
 {
@@ -22,7 +23,7 @@ class Dashboard extends Page
 
     public function title(): string
     {
-        return $this->title ?: 'Dashboard';
+        return $this->title ?: 'Добро пожаловать!';
     }
 
     /**
@@ -32,6 +33,9 @@ class Dashboard extends Page
 	{
        
 		return [
+            Text::make()
+            ->readonly()
+            ->placeholder('Приветствуем вас в административной панели компании Пышка!'),
         ];
 	}
 }
