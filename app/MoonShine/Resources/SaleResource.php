@@ -17,6 +17,7 @@ use MoonShine\Fields\Field;
 use MoonShine\Components\MoonShineComponent;
 use MoonShine\Fields\Relationships\BelongsTo;
 use MoonShine\Fields\Relationships\BelongsToMany;
+use MoonShine\Fields\Select;
 
 /**
  * @extends ModelResource<Sale>
@@ -69,5 +70,16 @@ class SaleResource extends ModelResource
     public function rules(Model $item): array
     {
         return [];
+    }
+    public function filters(): array 
+    {
+
+        return [
+            
+             
+                
+            
+                
+        ];
     }
 }

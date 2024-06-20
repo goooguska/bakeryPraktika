@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Pages;
 
-use MoonShine\ActionButtons\ActionButton;
 use MoonShine\Pages\Page;
 use MoonShine\Components\MoonShineComponent;
 
-class Dashboard extends Page
+class Query3 extends Page
 {
     /**
      * @return array<string, string>
@@ -22,7 +21,7 @@ class Dashboard extends Page
 
     public function title(): string
     {
-        return $this->title ?: 'Dashboard';
+        return $this->title ?: 'Query3';
     }
 
     /**
@@ -30,8 +29,6 @@ class Dashboard extends Page
      */
     public function components(): array
 	{
-       
-		return [
-        ];
+		return [];
 	}
 }

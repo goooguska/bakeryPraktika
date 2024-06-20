@@ -6,7 +6,7 @@ namespace App\MoonShine\Resources;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Query1;
-
+use MoonShine\ActionButtons\ActionButton;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
@@ -28,13 +28,10 @@ class Query1Resource extends ModelResource
      */
     public function fields(): array
     {
+       
         return [
-            Block::make([
-                ID::make()->sortable(),
-                Text::make(__('Поставщик'), 'name')
-                    ->required()
-                    ->showOnExport(),
-            ]),
+            Field::make('ID', 'id'),
+            Field::make('Name', 'name'),
         ];
     }
 
@@ -44,6 +41,13 @@ class Query1Resource extends ModelResource
      * @return array<string, string[]|string>
      * @see https://laravel.com/docs/validation#available-validation-rules
      */
+    public function buttons(): array
+    {
+      
+        return [
+          
+        ];
+    }
     public function rules(Model $item): array
     {
         return [];

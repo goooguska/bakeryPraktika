@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Models\Sale;
+use App\MoonShine\Pages\Query1;
+use App\MoonShine\Pages\Query2;
+use App\MoonShine\Pages\Query3;
 use App\MoonShine\Resources\BakedProductResource;
 use App\MoonShine\Resources\BakerResource;
 use App\MoonShine\Resources\IngredientResource;
@@ -44,7 +47,13 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
      */
     protected function pages(): array
     {
-        return [];
+        return [
+            Query1::make('Запрос 1', 'query1'),
+            Query2::make('Запрос 2', 'query2'),
+            Query3::make('Запрос 3', 'query3')
+
+
+        ];
     }
 
     /**
@@ -104,11 +113,10 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 ),
             ]),
             MenuGroup::make('Запросы',[
-                MenuItem::make(
-                    static fn() => __('Запрос 1'),
-                    new Query1Resource()
-                    
-                ),
+                MenuItem::make('Запрос 1', Query1::make('Запрос 1', 'query1')),
+                MenuItem::make('Запрос 2', Query2::make('Запрос 2', 'query2')),
+                MenuItem::make('Запрос 3', Query3::make('Запрос 3', 'query3'))
+
             ])
         ];
     }
@@ -120,52 +128,6 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
      public function boot(): void
      {
          parent::boot();
-  
-        //  moonshineColors()
-        //  ->background('#a25133') // Теплый пастельный бежевый
-        //  ->content('#FFFCF5') // Нежный кремовый
-        //  ->tableRow('#FFE4C4') // Светлый пастельный персиковый
-        //  ->dividers('#FFDAB9') // Пастельный персиковый
-        //  ->borders('#FFCBA4') // Пастельный абрикосовый
-        //  ->buttons('#FFA07A') // Светлый лососевый
-        //  ->primary('#FF7F50') // Коралловый
-        //  ->secondary('#FFDAB9'); // Пастельный персиковый
-        // moonshineColors()
-        // ->background('#FAF3E0') // Светло-карамельный
-        // ->content('#FFF8E1') // Кремовый
-        // ->tableRow('#F5DEB3') // Светло-коричневый
-        // ->dividers('#D2B48C') // Бежевый
-        // ->borders('#C2A384') // Карамельный
-        // ->buttons('#A0522D') // Коричнево-рыжий (терракотовый)
-        // ->primary('#8B4513') // Темно-коричневый (шоколадный)
-        // ->secondary('#CD853F'); // Карамельный
-        // moonshineColors()
-        // ->background('#EFE8D8') // Светлый кофе с молоком
-        // ->content('#EDE0C8') // Светло-бежевый
-        // ->tableRow('#D2B48C') // Бежевый
-        // ->dividers('#BC8F8F') // Светло-розово-коричневый
-        // ->borders('#8B4513') // Темно-коричневый (шоколадный)
-        // ->buttons('#A52A2A') // Коричнево-красный (каштановый)
-        // ->primary('#6B4226') // Темно-шоколадный
-        // ->secondary('#8B4513'); // Темно-коричневый (шоколадный)
-    // moonshineColors()
-    // ->background('#F5F5DC') // Бежевый
-    // ->content('#FAEBD7') // Античный белый
-    // ->tableRow('#D3B58D') // Светло-коричневый
-    // ->dividers('#C19A6B') // Сиенский
-    // ->borders('#8B7355') // Светло-шоколадный
-    // ->buttons('#8B4513') // Темно-коричневый (шоколадный)
-    // ->primary('#5C4033') // Кофейный
-    // ->secondary('#7B3F00'); // Шоколадно-коричневый
-    // moonshineColors()
-    // ->background('#FFEFD5') // Папайя
-    // ->content('#FFE4C4') // Бискайский
-    // ->tableRow('#D2B48C') // Бежевый
-    // ->dividers('#BC8F8F') // Розовато-коричневый
-    // ->borders('#CD853F') // Персиковый
-    // ->buttons('#8B4513') // Темно-коричневый (шоколадный)
-    // ->primary('#A0522D') // Рыжевато-коричневый (терракотовый)
-    // ->secondary('#8B0000'); // Темно-красный (бордовый)
 
      }
     protected function theme(): array

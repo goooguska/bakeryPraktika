@@ -2,8 +2,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\User\StoreRequest;
 use App\Models\User;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Hash;
 
 class StoreController extends Controller
@@ -38,6 +40,7 @@ class StoreController extends Controller
     $token = auth()->tokenById($user->id);
     return response(['token'=>$token]);
    }
+
   
     
 }

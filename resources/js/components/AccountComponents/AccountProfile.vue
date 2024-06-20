@@ -15,7 +15,6 @@ onMounted(async () => {
             <p class="profile__description-text" v-if="userInfo.role_id === 2">
                 Администратор
             </p>
-
             <p class="profile__description-text">
                 Ваш логин: {{ userInfo.login }}
             </p>

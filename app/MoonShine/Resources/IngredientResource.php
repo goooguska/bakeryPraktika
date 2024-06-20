@@ -12,9 +12,12 @@ use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Field;
 use MoonShine\Components\MoonShineComponent;
+use MoonShine\Fields\Date;
+use MoonShine\Fields\DateRange;
 use MoonShine\Fields\Text; 
 use MoonShine\Fields\Number;
 use MoonShine\Fields\Relationships\BelongsTo;
+use MoonShine\Fields\Select;
 
 /**
  * @extends ModelResource<Ingredient>
@@ -49,6 +52,7 @@ class IngredientResource extends ModelResource
                     static fn (Provider $model) => $model->name,
                     new ProviderResource(),
                 )->badge('info'),
+
             ]),
         ];
     }
@@ -62,5 +66,32 @@ class IngredientResource extends ModelResource
     public function rules(Model $item): array
     {
         return [];
+    }
+    public function filters(): array 
+    {
+
+        return [
+            Select::make('Поставщик', 'provider_id')
+                ->options(
+                    Provider::pluck('name', 'id')
+                        ->all()
+                )->nullable()->searchable(),
+                Select::make('Ингредиент', 'id')
+                ->options(
+                    Ingredient::pluck('name', 'id')
+                        ->all()
+                )->nullable()->searchable(),
+                Number::make('Количество', 'quantity'),
+                Select::make('Дата', 'date_of_delivery')
+                ->options(
+                    Provider::pluck('id', 'date_of_delivery')
+                        ->all()
+                )->nullable()->searchable(),
+                // Text::make('dada',$datesString),
+                // Date::make('date_of_delivery','date_of_delivery')
+                
+            
+                
+        ];
     }
 }

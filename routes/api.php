@@ -11,6 +11,7 @@ use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\RecipeIngredientController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserPasswordController;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
@@ -52,9 +53,11 @@ Route::get('/main', function () {
 })->name('main');
 
 
-
 Route::post('/users',StoreController::class);
 Route::post('/mail', MailController::class);
+
+
+
 
 Route::post('/forgot-password', [UserPasswordController::class, 'forgotPassword'])->name('password.request');
 Route::post('/reset-password/{token}', [UserPasswordController::class, 'resetPassword'])->name('password.reset');
