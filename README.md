@@ -20,8 +20,8 @@
 1. **Клонировать репозиторий:**
 
     ```sh
-    git clone https://github.com/yourusername/project-name.git
-    cd project-name
+    git clone https://github.com/goooguska/bakeryPraktika.git
+    cd bakeryPraktika
     ```
 
 2. **Установить зависимости бэкенда:**
@@ -48,6 +48,18 @@
 
     ```sh
     php artisan migrate
+    ```
+
+6. **Запустить сеялки:**
+
+    ```sh
+     php artisan db:seed
+    ```
+
+7. **Создать суперюзера(админа):**
+
+    ```sh
+    php artisan moonshine:user
     ```
 
 ## Использование
