@@ -53,7 +53,7 @@ class Query4 extends Page
                 ->action($action)
                 ->method('POST')
                 ->fields(  [
-                    Select::make('Название изделие', 'name')
+                    Select::make('Название ингредиента', 'name')
                     ->options(
                         Ingredient::pluck('name', 'id')
                             ->all()

@@ -27,15 +27,11 @@ class AuthController extends Controller
      */
     public function login(Request $request)
 {
-
-
         $request->validate([
             'login' => 'required|string',
             'password' => 'required|string',
             'recaptcha' => 'required|string', 
         ]);
- 
-
       $recaptchaToken = $request->input('recaptcha');
       $recaptchaSecret= env('VITE_GOOGLE_RECAPTCHA_SECRET');
 
@@ -47,7 +43,6 @@ class AuthController extends Controller
         if (!$recaptchaResult->success ) {
             return response()->json(['error' => 'Ошибка проверки reCAPTCHA'], 401);
         }
-
 
         $credentials = $request->only('login', 'password');
 
@@ -64,8 +59,7 @@ class AuthController extends Controller
         $token = Auth::attempt($credentials);
     
         return $this->respondWithToken($token);
-    
-    
+   
 }
      
 

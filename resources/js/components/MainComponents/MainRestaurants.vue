@@ -10,7 +10,8 @@ const mainStore = useMainStore();
             <ul class="restaurants__content-list">
                 <li
                     class="restaurants__content-list-item"
-                    v-for="restaurant in mainStore.restaurants"
+                    v-for="(restaurant, index) in mainStore.restaurants"
+                    :key="index"
                 >
                     <CardRestaurant :restaurant />
                 </li>

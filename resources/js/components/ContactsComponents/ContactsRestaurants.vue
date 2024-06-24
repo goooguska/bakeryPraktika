@@ -10,7 +10,8 @@ const mainStore = useMainStore();
         <ul class="contacts__list">
             <li
                 class="contacts__list-item"
-                v-for="restaurant in mainStore.restaurants"
+                v-for="(restaurant, index) in mainStore.restaurants"
+                :key="index"
             >
                 <CardContact :restaurant />
             </li>

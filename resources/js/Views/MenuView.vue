@@ -122,10 +122,6 @@ const filteredProducts = (type) => {
     }
     &__sections {
         margin-left: 50px;
-        &-section {
-            &-card {
-            }
-        }
         &-list {
             &-items {
                 display: flex;

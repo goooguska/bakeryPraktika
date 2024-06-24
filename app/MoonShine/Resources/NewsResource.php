@@ -47,7 +47,7 @@ class NewsResource extends ModelResource
                 Text::make(__('Описание'), 'info')
                 ->required()
                 ->showOnExport(),
-                // Image::make('Превью','image') 
+                Image::make('Превью','image') 
             ]),
         ];
     }

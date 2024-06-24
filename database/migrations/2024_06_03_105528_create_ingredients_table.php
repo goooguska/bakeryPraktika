@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
             $table->string('name', 55);
-
-        $table->integer('quantity')
+            $table->integer('quantity')
             ->default(0);
             $table->bigInteger('provider_id') 
             ->unsigned();
@@ -24,11 +23,7 @@ return new class extends Migration
             ->on('providers')          
             ->onDelete('CASCADE')      
             ->onUpdate('RESTRICT');
-
-
             $table->timestamps();
-
-          
         });
 
     }

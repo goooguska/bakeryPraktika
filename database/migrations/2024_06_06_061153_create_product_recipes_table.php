@@ -26,7 +26,7 @@ return new class extends Migration
             ->unsigned();
             $table->foreign('recipe_id') 
             ->unique()  
-            ->references('id')        // ПОФИКСИТЬ
+            ->references('id')     
             ->on('recipe_ingredients')          
             ->onDelete('CASCADE')      
             ->onUpdate('RESTRICT');

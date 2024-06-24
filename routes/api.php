@@ -55,14 +55,8 @@ Route::get('/main', function () {
 
 Route::post('/users',StoreController::class);
 Route::post('/mail', MailController::class);
-
-
-
-
 Route::post('/forgot-password', [UserPasswordController::class, 'forgotPassword'])->name('password.request');
 Route::post('/reset-password/{token}', [UserPasswordController::class, 'resetPassword'])->name('password.reset');
-
-
 Route::controller(AuthController::class)->middleware(['api' ])->prefix('auth')
     ->group(function ($router) {
 

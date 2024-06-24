@@ -93,7 +93,7 @@ class QueryController extends Controller
         ->select('i.name as ingredient_name', 'p.name', DB::raw('COUNT(bp.id) as total_products'))
         ->groupBy('p.id', 'p.name', 'i.name')
         ->get();
-   
+        
         return Query4::make('Запрос 4','query4' )
         ->setContentView('queries/query4', ['queries' => $query4])
         ->setBreadcrumbs([ '#' => 'Запрос 4']);

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name', 55)
             ->unique();
-
             $table->date("shift_at_work");
             $table->timestamps();
         });

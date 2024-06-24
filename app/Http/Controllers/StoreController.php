@@ -35,8 +35,6 @@ class StoreController extends Controller
     }
     $user=User::create($data);
 
-
-
     $token = auth()->tokenById($user->id);
     return response(['token'=>$token]);
    }
