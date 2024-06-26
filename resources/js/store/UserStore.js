@@ -25,16 +25,12 @@ export const useUserStore = defineStore("userStore", () => {
     };
 
     const resetPassword = async (password, password_confirmation, route) => {
-        const res = await axios.post(
-            `/api/reset-password/${route.params.token}`,
-            {
-                email: route.query.email,
-                password: password.value,
-                password_confirmation: password_confirmation.value,
-                token: route.params.token,
-            }
-        );
-        console.log(res);
+        await axios.post(`/api/reset-password/${route.params.token}`, {
+            email: route.query.email,
+            password: password.value,
+            password_confirmation: password_confirmation.value,
+            token: route.params.token,
+        });
         router.push({ name: "main" });
     };
 
